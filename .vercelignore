@@ -1,6 +1,7 @@
-# Exclude content from Vercel deployment
+# Exclude content from Vercel deployment (but keep config files)
 content/guides/
 content/staging/
+# Keep content/config/ for build-time fallbacks
 *.mdx
 
 # Exclude development files

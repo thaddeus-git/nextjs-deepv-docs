@@ -43,22 +43,7 @@ export async function fetchArticleIndex(): Promise<{
     return JSON.parse(content);
   } catch (error) {
     console.error('Error fetching article index:', error);
-    // Fallback to local file if external fetch fails (server-side only)
-    if (typeof window === 'undefined') {
-      try {
-        const localIndex = await import('@/content/config/article-index.json')
-        return localIndex.default as {
-          lastUpdated: string;
-          totalArticles: number;
-          categories: string[];
-          technologies: string[];
-          articles: Article[];
-        }
-      } catch (localError) {
-        console.error('Fallback to local file failed:', localError)
-      }
-    }
-    
+    // Return empty structure for build-time when external content is not available
     return {
       lastUpdated: new Date().toISOString(),
       totalArticles: 0,
@@ -134,16 +119,7 @@ export async function fetchCategories(): Promise<{ categories: CategoryData[] }>
     return JSON.parse(content);
   } catch (error) {
     console.error('Error fetching categories:', error);
-    // Fallback to local file if external fetch fails (server-side only)
-    if (typeof window === 'undefined') {
-      try {
-        const localCategories = await import('@/content/config/categories.json')
-        return localCategories.default
-      } catch (localError) {
-        console.error('Fallback to local categories file failed:', localError)
-      }
-    }
-    
+    // Return empty structure for build-time when external content is not available
     return { categories: [] }
   }
 }

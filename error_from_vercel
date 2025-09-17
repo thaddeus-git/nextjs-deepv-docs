@@ -1,277 +1,175 @@
-[22:03:52.439] Running build in Washington, D.C., USA (East) – iad1
-[22:03:52.440] Build machine configuration: 2 cores, 8 GB
-[22:03:52.484] Cloning github.com/thaddeus-git/nextjs-deepv-docs (Branch: main, Commit: 8245b5e)
-[22:03:52.606] Previous build caches not available
-[22:03:52.988] Cloning completed: 504.000ms
-[22:03:53.021] Found .vercelignore
-[22:03:53.033] Removed 79 ignored files defined in .vercelignore
-[22:03:53.033]   /.git/config
-[22:03:53.033]   /.git/description
-[22:03:53.033]   /.git/FETCH_HEAD
-[22:03:53.033]   /.git/HEAD
-[22:03:53.033]   /.git/hooks/applypatch-msg.sample
-[22:03:53.033]   /.git/hooks/commit-msg.sample
-[22:03:53.033]   /.git/hooks/fsmonitor-watchman.sample
-[22:03:53.033]   /.git/hooks/post-update.sample
-[22:03:53.033]   /.git/hooks/pre-applypatch.sample
-[22:03:53.033]   /.git/hooks/pre-commit.sample
-[22:03:53.313] Running "vercel build"
-[22:03:53.754] Vercel CLI 47.1.1
-[22:03:54.078] Installing dependencies...
-[22:04:07.261] 
-[22:04:07.263] added 470 packages in 13s
-[22:04:07.263] 
-[22:04:07.264] 235 packages are looking for funding
-[22:04:07.264]   run `npm fund` for details
-[22:04:07.317] Detected Next.js version: 15.5.3
-[22:04:07.322] Running "npm run build"
-[22:04:07.436] 
-[22:04:07.436] > nextjs-deepv-docs@0.1.0 build
-[22:04:07.436] > next build --turbopack
-[22:04:07.436] 
-[22:04:08.246] Attention: Next.js now collects completely anonymous telemetry regarding usage.
-[22:04:08.246] This information is used to shape Next.js' roadmap and prioritize features.
-[22:04:08.247] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-[22:04:08.247] https://nextjs.org/telemetry
-[22:04:08.247] 
-[22:04:08.302]    ▲ Next.js 15.5.3 (Turbopack)
-[22:04:08.302]    - Experiments (use with caution):
-[22:04:08.303]      · optimizePackageImports
-[22:04:08.303] 
-[22:04:08.387]    Creating an optimized production build ...
-[22:04:09.050]  ⚠ Webpack is configured while Turbopack is not, which may cause problems.
-[22:04:09.050]  ⚠ See instructions if you need to configure Turbopack:
-[22:04:09.050]   https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
-[22:04:09.050] 
-[22:04:17.688] Turbopack build encountered 1 warnings:
-[22:04:17.689] ./lib/articles.ts:29:32
-[22:04:17.690] Module not found: Can't resolve '@/content/config/article-index.json'
-[22:04:17.690] [0m [90m 27 |[39m     [90m// Fallback to local file[39m
-[22:04:17.690]  [90m 28 |[39m     [36mtry[39m {
-[22:04:17.691] [31m[1m>[22m[39m[90m 29 |[39m       [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
-[22:04:17.691]  [90m    |[39m                                [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.692]  [90m 30 |[39m       [36mreturn[39m localIndex[33m.[39m[36mdefault[39m[33m.[39marticles [36mas[39m [33mArticle[39m[]
-[22:04:17.693]  [90m 31 |[39m     } [36mcatch[39m (localError) {
-[22:04:17.693]  [90m 32 |[39m       console[33m.[39merror([32m'Local fallback failed:'[39m[33m,[39m localError)[0m
-[22:04:17.693] 
-[22:04:17.693] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
-[22:04:17.694] 
-[22:04:17.694] 
-[22:04:17.694] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.694] 
-[22:04:17.694] 
-[22:04:17.695]  ✓ Finished writing to disk in 21ms
-[22:04:17.704] 
-[22:04:17.705] > Build error occurred
-[22:04:17.710] Error: Turbopack build failed with 12 errors:
-[22:04:17.710] ./app/components/Navigation.tsx:17:5
-[22:04:17.710] Module not found: Can't resolve '@/content/config/article-index.json'
-[22:04:17.711] [0m [90m 15 |[39m   useEffect(() [33m=>[39m {
-[22:04:17.712]  [90m 16 |[39m     [90m// Load articles from static data for search[39m
-[22:04:17.712] [31m[1m>[22m[39m[90m 17 |[39m     [36mimport[39m([32m'@/content/config/article-index.json'[39m)
-[22:04:17.713]  [90m    |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.714]  [90m 18 |[39m       [33m.[39mthen(data [33m=>[39m setArticles(data[33m.[39marticles [36mas[39m [33mArticle[39m[]))
-[22:04:17.718]  [90m 19 |[39m       [33m.[39m[36mcatch[39m(() [33m=>[39m setArticles([]))
-[22:04:17.718]  [90m 20 |[39m   }[33m,[39m [])[0m
-[22:04:17.719] 
-[22:04:17.719] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
-[22:04:17.719] 
-[22:04:17.719] 
-[22:04:17.719] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.719] 
-[22:04:17.730] 
-[22:04:17.730] ./app/components/Navigation.tsx:17:5
-[22:04:17.730] Module not found: Can't resolve '@/content/config/article-index.json'
-[22:04:17.731] [0m [90m 15 |[39m   useEffect(() [33m=>[39m {
-[22:04:17.731]  [90m 16 |[39m     [90m// Load articles from static data for search[39m
-[22:04:17.731] [31m[1m>[22m[39m[90m 17 |[39m     [36mimport[39m([32m'@/content/config/article-index.json'[39m)
-[22:04:17.731]  [90m    |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.731]  [90m 18 |[39m       [33m.[39mthen(data [33m=>[39m setArticles(data[33m.[39marticles [36mas[39m [33mArticle[39m[]))
-[22:04:17.731]  [90m 19 |[39m       [33m.[39m[36mcatch[39m(() [33m=>[39m setArticles([]))
-[22:04:17.732]  [90m 20 |[39m   }[33m,[39m [])[0m
-[22:04:17.732] 
-[22:04:17.732] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
-[22:04:17.732] 
-[22:04:17.732] 
-[22:04:17.732] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.732] 
-[22:04:17.733] 
-[22:04:17.733] ./app/[category]/[subcategory]/page.tsx:3:1
-[22:04:17.733] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.733] [0m [90m 1 |[39m [90m// app/[category]/[subcategory]/page.tsx[39m
-[22:04:17.739]  [90m 2 |[39m [36mimport[39m { getArticlesByCategory } [36mfrom[39m [32m'@/lib/articles'[39m
-[22:04:17.739] [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m categories [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.740]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.740]  [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
-[22:04:17.741]  [90m 5 |[39m [36mimport[39m { notFound } [36mfrom[39m [32m'next/navigation'[39m
-[22:04:17.741]  [90m 6 |[39m[0m
-[22:04:17.741] 
-[22:04:17.741] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.741] 
-[22:04:17.742] 
-[22:04:17.742] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.742] 
-[22:04:17.742] 
-[22:04:17.742] ./app/[category]/[subcategory]/page.tsx:3:1
-[22:04:17.742] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.743] [0m [90m 1 |[39m [90m// app/[category]/[subcategory]/page.tsx[39m
-[22:04:17.743]  [90m 2 |[39m [36mimport[39m { getArticlesByCategory } [36mfrom[39m [32m'@/lib/articles'[39m
-[22:04:17.743] [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m categories [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.743]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.743]  [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
-[22:04:17.744]  [90m 5 |[39m [36mimport[39m { notFound } [36mfrom[39m [32m'next/navigation'[39m
-[22:04:17.744]  [90m 6 |[39m[0m
-[22:04:17.744] 
-[22:04:17.744] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.744] 
-[22:04:17.744] 
-[22:04:17.744] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.745] 
-[22:04:17.745] 
-[22:04:17.745] ./app/[category]/page.tsx:3:1
-[22:04:17.745] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.745] [0m [90m 1 |[39m [90m// app/[category]/page.tsx[39m
-[22:04:17.746]  [90m 2 |[39m [36mimport[39m { getArticlesByCategory } [36mfrom[39m [32m'@/lib/articles'[39m
-[22:04:17.746] [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m categories [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.746]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.747]  [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
-[22:04:17.747]  [90m 5 |[39m [36mimport[39m { notFound } [36mfrom[39m [32m'next/navigation'[39m
-[22:04:17.747]  [90m 6 |[39m[0m
-[22:04:17.747] 
-[22:04:17.747] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.748] 
-[22:04:17.748] 
-[22:04:17.748] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.748] 
-[22:04:17.748] 
-[22:04:17.749] ./app/[category]/page.tsx:3:1
-[22:04:17.749] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.749] [0m [90m 1 |[39m [90m// app/[category]/page.tsx[39m
-[22:04:17.749]  [90m 2 |[39m [36mimport[39m { getArticlesByCategory } [36mfrom[39m [32m'@/lib/articles'[39m
-[22:04:17.751] [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m categories [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.751]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.751]  [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
-[22:04:17.751]  [90m 5 |[39m [36mimport[39m { notFound } [36mfrom[39m [32m'next/navigation'[39m
-[22:04:17.751]  [90m 6 |[39m[0m
-[22:04:17.751] 
-[22:04:17.751] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.751] 
-[22:04:17.751] 
-[22:04:17.752] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.752] 
-[22:04:17.752] 
-[22:04:17.752] ./lib/navigation.ts:2:1
-[22:04:17.752] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.752] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.752] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.752]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.752]  [90m 3 |[39m
-[22:04:17.752]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.753]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.753] 
-[22:04:17.753] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.753] 
-[22:04:17.753] 
-[22:04:17.753] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.753] 
-[22:04:17.753] 
-[22:04:17.753] ./lib/navigation.ts:2:1
-[22:04:17.753] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.753] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.753] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.753]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.754]  [90m 3 |[39m
-[22:04:17.754]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.754]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.754] 
-[22:04:17.754] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.754] 
-[22:04:17.754] 
-[22:04:17.754] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.754] 
-[22:04:17.754] 
-[22:04:17.755] ./lib/navigation.ts:2:1
-[22:04:17.755] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.755] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.755] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.755]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.755]  [90m 3 |[39m
-[22:04:17.755]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.755]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.755] 
-[22:04:17.756] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.756] 
-[22:04:17.756] 
-[22:04:17.756] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.756] 
-[22:04:17.756] 
-[22:04:17.756] ./lib/navigation.ts:2:1
-[22:04:17.757] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.757] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.757] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.757]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.757]  [90m 3 |[39m
-[22:04:17.757]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.758]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.758] 
-[22:04:17.758] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.758] 
-[22:04:17.758] 
-[22:04:17.758] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.759] 
-[22:04:17.759] 
-[22:04:17.759] ./lib/navigation.ts:2:1
-[22:04:17.759] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.759] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.759] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.760]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.760]  [90m 3 |[39m
-[22:04:17.760]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.760]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.760] 
-[22:04:17.761] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.761] 
-[22:04:17.762] 
-[22:04:17.762] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.762] 
-[22:04:17.763] 
-[22:04:17.763] ./lib/navigation.ts:2:1
-[22:04:17.763] Module not found: Can't resolve '@/content/config/categories.json'
-[22:04:17.763] [0m [90m 1 |[39m [90m// lib/navigation.ts[39m
-[22:04:17.763] [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m categoriesConfig [36mfrom[39m [32m'@/content/config/categories.json'[39m
-[22:04:17.763]  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[22:04:17.763]  [90m 3 |[39m
-[22:04:17.763]  [90m 4 |[39m [36mexport[39m [36minterface[39m [33mCategory[39m {
-[22:04:17.763]  [90m 5 |[39m   id[33m:[39m string[0m
-[22:04:17.763] 
-[22:04:17.763] Import map: aliased to relative './content/config/categories.json' inside of [project]/
-[22:04:17.763] 
-[22:04:17.763] 
-[22:04:17.763] https://nextjs.org/docs/messages/module-not-found
-[22:04:17.763] 
-[22:04:17.763] 
-[22:04:17.763]     at <unknown> (./app/components/Navigation.tsx:17:5)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./app/components/Navigation.tsx:17:5)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./app/[category]/[subcategory]/page.tsx:3:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./app/[category]/[subcategory]/page.tsx:3:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./app/[category]/page.tsx:3:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./app/[category]/page.tsx:3:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.764]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.764]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.765]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.765]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.765]     at <unknown> (./lib/navigation.ts:2:1)
-[22:04:17.765]     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[22:04:17.782] Error: Command "npm run build" exited with 1
+[22:31:37.882] Running build in Washington, D.C., USA (East) – iad1
+[22:31:37.882] Build machine configuration: 2 cores, 8 GB
+[22:31:37.894] Cloning github.com/thaddeus-git/nextjs-deepv-docs (Branch: main, Commit: f656634)
+[22:31:38.021] Previous build caches not available
+[22:31:38.536] Cloning completed: 641.000ms
+[22:31:38.575] Found .vercelignore
+[22:31:38.595] Removed 100 ignored files defined in .vercelignore
+[22:31:38.595]   /.git/config
+[22:31:38.595]   /.git/description
+[22:31:38.596]   /.git/FETCH_HEAD
+[22:31:38.596]   /.git/HEAD
+[22:31:38.596]   /.git/hooks/applypatch-msg.sample
+[22:31:38.596]   /.git/hooks/commit-msg.sample
+[22:31:38.596]   /.git/hooks/fsmonitor-watchman.sample
+[22:31:38.596]   /.git/hooks/post-update.sample
+[22:31:38.596]   /.git/hooks/pre-applypatch.sample
+[22:31:38.596]   /.git/hooks/pre-commit.sample
+[22:31:38.859] Running "vercel build"
+[22:31:39.355] Vercel CLI 47.1.1
+[22:31:39.681] Installing dependencies...
+[22:31:52.209] 
+[22:31:52.209] added 470 packages in 12s
+[22:31:52.209] 
+[22:31:52.209] 235 packages are looking for funding
+[22:31:52.209]   run `npm fund` for details
+[22:31:52.262] Detected Next.js version: 15.5.3
+[22:31:52.268] Running "npm run build"
+[22:31:52.397] 
+[22:31:52.398] > nextjs-deepv-docs@0.1.0 build
+[22:31:52.398] > next build --turbopack
+[22:31:52.398] 
+[22:31:53.209] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[22:31:53.210] This information is used to shape Next.js' roadmap and prioritize features.
+[22:31:53.210] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[22:31:53.210] https://nextjs.org/telemetry
+[22:31:53.210] 
+[22:31:53.263]    ▲ Next.js 15.5.3 (Turbopack)
+[22:31:53.263]    - Experiments (use with caution):
+[22:31:53.264]      · optimizePackageImports
+[22:31:53.264] 
+[22:31:53.332]    Creating an optimized production build ...
+[22:31:54.047]  ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+[22:31:54.048]  ⚠ See instructions if you need to configure Turbopack:
+[22:31:54.048]   https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+[22:31:54.049] 
+[22:32:02.660]  ✓ Finished writing to disk in 38ms
+[22:32:02.696] Turbopack build encountered 7 warnings:
+[22:32:02.697] ./lib/articles.ts:28:32
+[22:32:02.697] Module not found: Can't resolve '@/content/config/article-index.json'
+[22:32:02.697] [0m [90m 26 |[39m     [90m// Fallback to local file[39m
+[22:32:02.697]  [90m 27 |[39m     [36mtry[39m {
+[22:32:02.698] [31m[1m>[22m[39m[90m 28 |[39m       [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:02.698]  [90m    |[39m                                [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.699]  [90m 29 |[39m       [36mreturn[39m localIndex[33m.[39m[36mdefault[39m[33m.[39marticles [36mas[39m [33mArticle[39m[]
+[22:32:02.699]  [90m 30 |[39m     } [36mcatch[39m (localError) {
+[22:32:02.699]  [90m 31 |[39m       console[33m.[39merror([32m'Local fallback failed:'[39m[33m,[39m localError)[0m
+[22:32:02.699] 
+[22:32:02.700] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
+[22:32:02.700] 
+[22:32:02.700] 
+[22:32:02.700] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.700] 
+[22:32:02.700] 
+[22:32:02.700] ./lib/articles.ts:28:32
+[22:32:02.700] Module not found: Can't resolve '@/content/config/article-index.json'
+[22:32:02.700] [0m [90m 26 |[39m     [90m// Fallback to local file[39m
+[22:32:02.700]  [90m 27 |[39m     [36mtry[39m {
+[22:32:02.700] [31m[1m>[22m[39m[90m 28 |[39m       [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:02.700]  [90m    |[39m                                [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.701]  [90m 29 |[39m       [36mreturn[39m localIndex[33m.[39m[36mdefault[39m[33m.[39marticles [36mas[39m [33mArticle[39m[]
+[22:32:02.702]  [90m 30 |[39m     } [36mcatch[39m (localError) {
+[22:32:02.702]  [90m 31 |[39m       console[33m.[39merror([32m'Local fallback failed:'[39m[33m,[39m localError)[0m
+[22:32:02.702] 
+[22:32:02.703] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
+[22:32:02.703] 
+[22:32:02.703] 
+[22:32:02.703] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.703] 
+[22:32:02.703] 
+[22:32:02.703] ./lib/articles.ts:28:32
+[22:32:02.703] Module not found: Can't resolve '@/content/config/article-index.json'
+[22:32:02.703] [0m [90m 26 |[39m     [90m// Fallback to local file[39m
+[22:32:02.703]  [90m 27 |[39m     [36mtry[39m {
+[22:32:02.703] [31m[1m>[22m[39m[90m 28 |[39m       [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:02.703]  [90m    |[39m                                [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.703]  [90m 29 |[39m       [36mreturn[39m localIndex[33m.[39m[36mdefault[39m[33m.[39marticles [36mas[39m [33mArticle[39m[]
+[22:32:02.703]  [90m 30 |[39m     } [36mcatch[39m (localError) {
+[22:32:02.703]  [90m 31 |[39m       console[33m.[39merror([32m'Local fallback failed:'[39m[33m,[39m localError)[0m
+[22:32:02.703] 
+[22:32:02.703] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
+[22:32:02.703] 
+[22:32:02.703] 
+[22:32:02.703] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.703] 
+[22:32:02.703] 
+[22:32:02.703] ./lib/content-fetcher.ts:49:34
+[22:32:02.703] Module not found: Can't resolve '@/content/config/article-index.json'
+[22:32:02.703] [0m [90m 47 |[39m     [36mif[39m ([36mtypeof[39m window [33m===[39m [32m'undefined'[39m) {
+[22:32:02.703]  [90m 48 |[39m       [36mtry[39m {
+[22:32:02.703] [31m[1m>[22m[39m[90m 49 |[39m         [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:02.703]  [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.703]  [90m 50 |[39m         [36mreturn[39m localIndex[33m.[39m[36mdefault[39m [36mas[39m {
+[22:32:02.703]  [90m 51 |[39m           lastUpdated[33m:[39m string[33m;[39m
+[22:32:02.703]  [90m 52 |[39m           totalArticles[33m:[39m number[33m;[39m[0m
+[22:32:02.703] 
+[22:32:02.703] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
+[22:32:02.705] 
+[22:32:02.705] 
+[22:32:02.705] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.705] 
+[22:32:02.705] 
+[22:32:02.705] ./lib/content-fetcher.ts:49:34
+[22:32:02.705] Module not found: Can't resolve '@/content/config/article-index.json'
+[22:32:02.705] [0m [90m 47 |[39m     [36mif[39m ([36mtypeof[39m window [33m===[39m [32m'undefined'[39m) {
+[22:32:02.705]  [90m 48 |[39m       [36mtry[39m {
+[22:32:02.705] [31m[1m>[22m[39m[90m 49 |[39m         [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:02.705]  [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.705]  [90m 50 |[39m         [36mreturn[39m localIndex[33m.[39m[36mdefault[39m [36mas[39m {
+[22:32:02.705]  [90m 51 |[39m           lastUpdated[33m:[39m string[33m;[39m
+[22:32:02.705]  [90m 52 |[39m           totalArticles[33m:[39m number[33m;[39m[0m
+[22:32:02.706] 
+[22:32:02.706] Import map: aliased to relative './content/config/article-index.json' inside of [project]/
+[22:32:02.706] 
+[22:32:02.706] 
+[22:32:02.706] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.706] 
+[22:32:02.706] 
+[22:32:02.706] ./lib/content-fetcher.ts:140:39
+[22:32:02.706] Module not found: Can't resolve '@/content/config/categories.json'
+[22:32:02.706] [0m [90m 138 |[39m     [36mif[39m ([36mtypeof[39m window [33m===[39m [32m'undefined'[39m) {
+[22:32:02.706]  [90m 139 |[39m       [36mtry[39m {
+[22:32:02.706] [31m[1m>[22m[39m[90m 140 |[39m         [36mconst[39m localCategories [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/categories.json'[39m)
+[22:32:02.706]  [90m     |[39m                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.706]  [90m 141 |[39m         [36mreturn[39m localCategories[33m.[39m[36mdefault[39m
+[22:32:02.706]  [90m 142 |[39m       } [36mcatch[39m (localError) {
+[22:32:02.706]  [90m 143 |[39m         console[33m.[39merror([32m'Fallback to local categories file failed:'[39m[33m,[39m localError)[0m
+[22:32:02.706] 
+[22:32:02.706] Import map: aliased to relative './content/config/categories.json' inside of [project]/
+[22:32:02.706] 
+[22:32:02.706] 
+[22:32:02.706] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.706] 
+[22:32:02.706] 
+[22:32:02.706] ./lib/content-fetcher.ts:140:39
+[22:32:02.706] Module not found: Can't resolve '@/content/config/categories.json'
+[22:32:02.706] [0m [90m 138 |[39m     [36mif[39m ([36mtypeof[39m window [33m===[39m [32m'undefined'[39m) {
+[22:32:02.707]  [90m 139 |[39m       [36mtry[39m {
+[22:32:02.707] [31m[1m>[22m[39m[90m 140 |[39m         [36mconst[39m localCategories [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/categories.json'[39m)
+[22:32:02.707]  [90m     |[39m                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[22:32:02.707]  [90m 141 |[39m         [36mreturn[39m localCategories[33m.[39m[36mdefault[39m
+[22:32:02.707]  [90m 142 |[39m       } [36mcatch[39m (localError) {
+[22:32:02.707]  [90m 143 |[39m         console[33m.[39merror([32m'Fallback to local categories file failed:'[39m[33m,[39m localError)[0m
+[22:32:02.707] 
+[22:32:02.707] Import map: aliased to relative './content/config/categories.json' inside of [project]/
+[22:32:02.707] 
+[22:32:02.707] 
+[22:32:02.707] https://nextjs.org/docs/messages/module-not-found
+[22:32:02.707] 
+[22:32:02.707] 
+[22:32:02.754]  ✓ Compiled successfully in 8.7s
+[22:32:02.759]    Linting and checking validity of types ...
+[22:32:07.887] Failed to compile.
+[22:32:07.888] 
+[22:32:07.888] ./lib/articles.ts:28:39
+[22:32:07.888] Type error: Cannot find module '@/content/config/article-index.json' or its corresponding type declarations.
+[22:32:07.888] 
+[22:32:07.890] [0m [90m 26 |[39m     [90m// Fallback to local file[39m
+[22:32:07.891]  [90m 27 |[39m     [36mtry[39m {
+[22:32:07.891] [31m[1m>[22m[39m[90m 28 |[39m       [36mconst[39m localIndex [33m=[39m [36mawait[39m [36mimport[39m([32m'@/content/config/article-index.json'[39m)
+[22:32:07.891]  [90m    |[39m                                       [31m[1m^[22m[39m
+[22:32:07.891]  [90m 29 |[39m       [36mreturn[39m localIndex[33m.[39m[36mdefault[39m[33m.[39marticles [36mas[39m [33mArticle[39m[]
+[22:32:07.891]  [90m 30 |[39m     } [36mcatch[39m (localError) {
+[22:32:07.891]  [90m 31 |[39m       console[33m.[39merror([32m'Local fallback failed:'[39m[33m,[39m localError)[0m
+[22:32:07.906] Next.js build worker exited with code: 1 and signal: null
+[22:32:07.931] Error: Command "npm run build" exited with 1

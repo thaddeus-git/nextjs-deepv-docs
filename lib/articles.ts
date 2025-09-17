@@ -23,14 +23,8 @@ export async function getAllArticles(): Promise<Article[]> {
     return index.articles as Article[]
   } catch (error) {
     console.error('Error fetching articles:', error)
-    // Fallback to local file
-    try {
-      const localIndex = await import('@/content/config/article-index.json')
-      return localIndex.default.articles as Article[]
-    } catch (localError) {
-      console.error('Local fallback failed:', localError)
-      return []
-    }
+    // Return empty array for build-time when external content is not available
+    return []
   }
 }
 
