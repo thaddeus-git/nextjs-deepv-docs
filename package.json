@@ -9,7 +9,7 @@
     "lint": "eslint",
     "migrate:content": "node scripts/migrate-content.js",
     "setup:content-repo": "bash scripts/setup-content-repo.sh",
-    "validate:content": "cd ../nextjs-deepv-content && node validate-content.js staging/guides ../nextjs-deepv-docs/config/content-schema.json",
+    
     "promote:content": "node scripts/promote-content.js ../nextjs-deepv-content",
     "deploy:vercel": "vercel --prod"
   },
