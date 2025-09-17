@@ -1,4 +1,10 @@
 {
+  "_metadata": {
+    "version": "1.0.0",
+    "source": "nextjs-deepv-docs/config/content-schema.json",
+    "lastUpdated": "2024-09-18",
+    "description": "Authoritative content schema for DeepV Code articles"
+  },
   "article_schema": {
     "filename_format": "{descriptive-title}-{uniqueId}.mdx",
     "frontmatter_required": [

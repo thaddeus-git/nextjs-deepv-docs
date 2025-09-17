@@ -40,7 +40,7 @@ function main() {
   const stagingConfig = path.join(contentRepoPath, 'staging', 'config', 'article-index-update.json');
   const productionGuides = path.join(contentRepoPath, 'guides');
   const productionConfig = path.join(contentRepoPath, 'config', 'article-index.json');
-  const schemaFile = path.join(__dirname, '..', 'config', 'content-schema.json');
+  const schemaFile = path.join(contentRepoPath, 'content-schema.json');
 
   log('cyan', '🚀 DeepV Code Content Promotion');
   log('cyan', '===============================');
