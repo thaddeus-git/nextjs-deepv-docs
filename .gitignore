@@ -40,9 +40,15 @@ next-env.d.ts
 content/guides/
 content/staging/
 
-# Keep only the essential content structure
+# Keep only the essential content structure  
 !content/config/
 content/config/*.json
+
+# Keep project configuration files
+!config/
+
+# Temporary development files
+temp-files/
 
 # IDE
 .vscode/

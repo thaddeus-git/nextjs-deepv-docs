@@ -1,0 +1,33 @@
+{
+  "frontend": {
+    "framework": "Next.js 15",
+    "router": "App Router",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "components": "React Server Components"
+  },
+  "content": {
+    "format": "MDX",
+    "processing": "next-mdx-remote/rsc",
+    "frontmatter": "gray-matter",
+    "storage": "External GitHub repository"
+  },
+  "deployment": {
+    "platform": "Vercel",
+    "strategy": "ISR",
+    "build_optimization": "Turbopack",
+    "caching": "Vercel Edge Network"
+  },
+  "development": {
+    "package_manager": "npm",
+    "linting": "ESLint",
+    "git_workflow": "main branch deployment"
+  },
+  "key_dependencies": [
+    "next@15.5.3",
+    "react@19.1.0", 
+    "next-mdx-remote@5.0.0",
+    "gray-matter@4.0.3",
+    "@types/mdx@2.0.13"
+  ]
+}
