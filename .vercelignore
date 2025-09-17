@@ -1,0 +1,15 @@
+# Exclude content from Vercel deployment
+content/guides/
+content/staging/
+*.mdx
+
+# Exclude development files
+.git/
+.next/cache/
+node_modules/
+.env.local
+.DS_Store
+
+# Exclude large assets that aren't needed for build
+public/images/
+public/assets/
