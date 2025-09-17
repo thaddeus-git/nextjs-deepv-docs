@@ -1,0 +1,130 @@
+{
+  "url": "https://stackoverflow.com/questions/20188078/google-maps-v3-strokeweight-polyline-scalable",
+  "crawled_at": "2025-09-13T00:13:34.605353",
+  "question_id": "20188078",
+  "title": "Google Maps V3, strokeWeight Polyline scalable",
+  "question_text": "I have a problem: this is my map now:\nI have circles in the map, and I can scale them. But I have polylines too, I tried to scale them by strokeWeight but this doesn't work. I need draw a route with a personalizable width, like the circle's radius. Any idea?\ngoogle.\nmaps\n.\nevent\n.\naddListener\n(\nthis\n.\nmarkerEdit\n,\n'mouseup'\n,\nfunction\n(\n) {\nif\n(me.\npoly\n!=\nnull\n){\nvar\nOptions\n= {\nstrokeWeight\n:\n2000\n};\n        me.\npoly\n.\nsetOptions\n(\nOptions\n);\n    }\n});\nOr\ngoogle.\nmaps\n.\nevent\n.\naddListener\n(\nthis\n.\nmarkerEdit\n,\n'mouseup'\n,\nfunction\n(\n) {\nif\n(me.\npoly\n!=\nnull\n){\n        me.\npoly\n.\nsetStrokeWeight\n(\n2000\n);\n    }\n});\nI tried the two.\nThank you",
+  "question_code_snippets": [
+    "google.maps.event.addListener(this.markerEdit, 'mouseup', function() {\n    if(me.poly!=null){\n        var Options = {strokeWeight: 2000};\n        me.poly.setOptions(Options);\n    }\n});\n",
+    "google.maps.event.addListener(this.markerEdit, 'mouseup', function() {\n    if(me.poly!=null){\n        me.poly.setStrokeWeight(2000);\n    }\n});\n"
+  ],
+  "tags": [
+    "javascript",
+    "google-maps",
+    "google-maps-api-3",
+    "google-polyline"
+  ],
+  "votes": 2,
+  "answers_count": 0,
+  "views": "Viewed\n                        8k times",
+  "asked_date": "2013-11-25 08:44:35Z",
+  "user": "LuisSM",
+  "user_reputation": "",
+  "question_comments": [
+    {
+      "comment_id": "30098114",
+      "text": "Give us some sample code or a jsfiddle. In my experience, strokeWeight has always worked.",
+      "votes": 0,
+      "user": "Milanzor",
+      "date": ""
+    },
+    {
+      "comment_id": "30147369",
+      "text": "Hello? Anyone know anything?",
+      "votes": 0,
+      "user": "LuisSM",
+      "date": ""
+    },
+    {
+      "comment_id": "30148288",
+      "text": "Check out developers.google.com/maps/documentation/javascript/examples/… This might be using a PNG, but you could try to use a SVG so it scales nicely. If you zoom in and out on that example, the overlayed image stays in the right position. In the code, displayed under the map, you can find a function called \"overlayProjection.fromLatLngToDivPixel\". I can imagine this will allow you to translate a LatLng to pixels. Using those pixels you might be able to change the dimension of your overlay SVG. Sorry, it's all I could come up with, it's not gonna be easy.",
+      "votes": 0,
+      "user": "Milanzor",
+      "date": ""
+    },
+    {
+      "comment_id": "30183717",
+      "text": "Thanks for your help, this is a big problem for me but this is something to start :)",
+      "votes": 0,
+      "user": "LuisSM",
+      "date": ""
+    }
+  ],
+  "answers": [
+    {
+      "answer_id": "20193411",
+      "position": 1,
+      "text": "I think you're using the wrong function to change the strokeweight.\nTry using\nme.\npoly\n.\nsetOptions\n({\nstrokeWeight\n:\n2000\n});\nCheck out this example fiddle:\nhttp://jsfiddle.net/cx4Gm/\nIt should explain everything you need.",
+      "code_snippets": [
+        "me.poly.setOptions({strokeWeight: 2000});\n"
+      ],
+      "votes": 1,
+      "is_accepted": false,
+      "user": "Milanzor",
+      "user_reputation": "",
+      "date": "2013-11-25 12:42:03Z",
+      "comments": [
+        {
+          "comment_id": "30106220",
+          "text": "Yes, is a good example, but is not what I'm looking for. In your example, if I change the stroke to 33 I get the same result if I put the stroke to 200 or 2000, and that's the problem, I need a big and real width. Another problem is the zoom, I need the real width when I use the zoom, but my first problem is get a big width. Maybe using another object?",
+          "votes": 0,
+          "user": "LuisSM",
+          "date": ""
+        },
+        {
+          "comment_id": "30107042",
+          "text": "@LuisSM - the max stroke weight appears to be 32 for a polyline. The polyline width will always be THAT weight, it doesn't matter wether you zoom, it will be the exact same size on your screen. So weight 10 with a map zoom of 8 will look the same as weight 10 with a map zoom of 3. Is this what you mean with \"real width\"? What exactly is it you are trying to achieve?",
+          "votes": 0,
+          "user": "Milanzor",
+          "date": ""
+        },
+        {
+          "comment_id": "30109800",
+          "text": "Yes, that's what I mean and that's my problem. I need something like circles to draw a route (like a polyline, with multipoint) but with radius or width customized. And example, a route with some Km or Miles as width.",
+          "votes": 0,
+          "user": "LuisSM",
+          "date": ""
+        }
+      ]
+    },
+    {
+      "answer_id": "20642288",
+      "position": 2,
+      "text": "I have the same problem.\nThis is what i made :\ngoogle.\nmaps\n.\nevent\n.\naddListener\n(mapRelatorioMapa ,\n'zoom_changed'\n,\nfunction\n(\n){\nvar\nzoom = mapRelatorioMapa.\ngetZoom\n() * larg /\n17\n;\nfor\n(\nvar\nobj\nin\nredLine)\n    {\n        redLine[obj].\nsetOptions\n({\nstrokeWeight\n: zoom});\n    }\n});\nSo I get the zoom and try to multiply it , \nbut it doesn't work so good \nI think that you have to try to find the real scale for each zoom and make a table.",
+      "code_snippets": [
+        "google.maps.event.addListener(mapRelatorioMapa , 'zoom_changed', function(){\n    var zoom = mapRelatorioMapa.getZoom() * larg /17 ; \n    for(var obj in redLine)\n    {\n        redLine[obj].setOptions({strokeWeight: zoom});\n    }\n});\n"
+      ],
+      "votes": 0,
+      "is_accepted": false,
+      "user": "stark",
+      "user_reputation": "",
+      "date": "2016-02-02 21:50:42Z",
+      "comments": [
+        {
+          "comment_id": "31006750",
+          "text": "What is the difference between your code and mine? Zoom's value can be 10 or 1000, but the limit of strokeWeight is 33.",
+          "votes": 0,
+          "user": "LuisSM",
+          "date": ""
+        },
+        {
+          "comment_id": "31345369",
+          "text": "i have the solution for your problem , make a polygon , if you still need q solution just tell me",
+          "votes": 0,
+          "user": "katim labidi",
+          "date": ""
+        },
+        {
+          "comment_id": "32027150",
+          "text": "I still need a solution :( but I guess what you can suggest",
+          "votes": 0,
+          "user": "LuisSM",
+          "date": ""
+        }
+      ]
+    }
+  ],
+  "traffic": "0",
+  "keywords": "0",
+  "crawl_method": "firecrawl_api"
+}

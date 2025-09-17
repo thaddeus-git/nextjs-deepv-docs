@@ -1,6 +1,6 @@
 // app/[category]/page.tsx
 import { getArticlesByCategory } from '@/lib/articles'
-import categories from '@/content/config/categories.json'
+import { getAllCategoriesAsync } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -9,14 +9,16 @@ interface CategoryPageProps {
 }
 
 export async function generateStaticParams() {
-  return categories.categories.map((category) => ({
+  const categories = await getAllCategoriesAsync()
+  return categories.map((category) => ({
     category: category.id,
   }))
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
   const resolvedParams = await params
-  const category = categories.categories.find(cat => cat.id === resolvedParams.category)
+  const categories = await getAllCategoriesAsync()
+  const category = categories.find(cat => cat.id === resolvedParams.category)
   
   if (!category) {
     return {
@@ -32,7 +34,8 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params
-  const category = categories.categories.find(cat => cat.id === resolvedParams.category)
+  const categories = await getAllCategoriesAsync()
+  const category = categories.find(cat => cat.id === resolvedParams.category)
   
   if (!category) {
     notFound()

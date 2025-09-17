@@ -1,6 +1,6 @@
 // app/[category]/[subcategory]/page.tsx
 import { getArticlesByCategory } from '@/lib/articles'
-import categories from '@/content/config/categories.json'
+import { getAllCategoriesAsync } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -13,8 +13,9 @@ interface SubcategoryPageProps {
 
 export async function generateStaticParams() {
   const params: { category: string; subcategory: string }[] = []
+  const categories = await getAllCategoriesAsync()
   
-  categories.categories.forEach((category) => {
+  categories.forEach((category) => {
     category.subcategories.forEach((subcategory) => {
       params.push({
         category: category.id,
@@ -28,7 +29,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: SubcategoryPageProps) {
   const resolvedParams = await params
-  const category = categories.categories.find(cat => cat.id === resolvedParams.category)
+  const categories = await getAllCategoriesAsync()
+  const category = categories.find(cat => cat.id === resolvedParams.category)
   const subcategory = category?.subcategories.find(sub => sub.id === resolvedParams.subcategory)
   
   if (!category || !subcategory) {
@@ -45,7 +47,8 @@ export async function generateMetadata({ params }: SubcategoryPageProps) {
 
 export default async function SubcategoryPage({ params }: SubcategoryPageProps) {
   const resolvedParams = await params
-  const category = categories.categories.find(cat => cat.id === resolvedParams.category)
+  const categories = await getAllCategoriesAsync()
+  const category = categories.find(cat => cat.id === resolvedParams.category)
   const subcategory = category?.subcategories.find(sub => sub.id === resolvedParams.subcategory)
   
   if (!category || !subcategory) {

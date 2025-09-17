@@ -43,20 +43,28 @@ export async function fetchArticleIndex(): Promise<{
     return JSON.parse(content);
   } catch (error) {
     console.error('Error fetching article index:', error);
-    // Fallback to local file if external fetch fails
-    try {
-      const fs = await import('fs/promises');
-      const localContent = await fs.readFile('./content/config/article-index.json', 'utf-8');
-      return JSON.parse(localContent);
-    } catch (localError) {
-      console.error('Fallback to local file failed:', localError);
-      return {
-        lastUpdated: new Date().toISOString(),
-        totalArticles: 0,
-        categories: [],
-        technologies: [],
-        articles: []
-      };
+    // Fallback to local file if external fetch fails (server-side only)
+    if (typeof window === 'undefined') {
+      try {
+        const localIndex = await import('@/content/config/article-index.json')
+        return localIndex.default as {
+          lastUpdated: string;
+          totalArticles: number;
+          categories: string[];
+          technologies: string[];
+          articles: Article[];
+        }
+      } catch (localError) {
+        console.error('Fallback to local file failed:', localError)
+      }
+    }
+    
+    return {
+      lastUpdated: new Date().toISOString(),
+      totalArticles: 0,
+      categories: [],
+      technologies: [],
+      articles: []
     }
   }
 }
@@ -84,14 +92,59 @@ export async function fetchArticleContent(filename: string): Promise<string> {
     return await response.text();
   } catch (error) {
     console.error(`Error fetching article content for ${filename}:`, error);
-    // Fallback to local file if external fetch fails
-    try {
-      const fs = await import('fs/promises');
-      return await fs.readFile(`./content/guides/${filename}`, 'utf-8');
-    } catch (localError) {
-      console.error('Fallback to local file failed:', localError);
-      throw new Error(`Article not found: ${filename}`);
+    // No local fallback for article content in production build
+    throw new Error(`Article not found: ${filename}`)
+  }
+}
+
+interface CategoryData {
+  id: string;
+  title: string;
+  description: string;
+  subcategories: Array<{
+    id: string;
+    title: string;
+    color: string;
+  }>;
+}
+
+// Fetch categories configuration from content repository  
+export async function fetchCategories(): Promise<{ categories: CategoryData[] }> {
+  try {
+    const headers: Record<string, string> = {
+      'Accept': 'application/vnd.github.v3+json',
+    };
+    
+    if (GITHUB_TOKEN) {
+      headers['Authorization'] = `token ${GITHUB_TOKEN}`;
     }
+
+    // Fetch the categories config file
+    const response = await fetch(`${CONTENT_REPO_URL}/contents/config/categories.json`, {
+      headers,
+      next: { revalidate: 3600 } // Cache for 1 hour
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch categories: ${response.status}`);
+    }
+
+    const fileData = await response.json();
+    const content = Buffer.from(fileData.content, 'base64').toString('utf-8');
+    return JSON.parse(content);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    // Fallback to local file if external fetch fails (server-side only)
+    if (typeof window === 'undefined') {
+      try {
+        const localCategories = await import('@/content/config/categories.json')
+        return localCategories.default
+      } catch (localError) {
+        console.error('Fallback to local categories file failed:', localError)
+      }
+    }
+    
+    return { categories: [] }
   }
 }
 

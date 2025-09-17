@@ -1,6 +1,4 @@
 // lib/articles.ts
-import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
 import { fetchArticleIndex, fetchArticleContent } from './content-fetcher'
 
@@ -16,6 +14,7 @@ export interface Article {
   lastUpdated: string
   featured?: boolean
   content?: string
+  filename?: string  // Filename in the content repository
 }
 
 export async function getAllArticles(): Promise<Article[]> {
@@ -41,24 +40,21 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     const index = await fetchArticleIndex()
     const articleMeta = index.articles.find(a => a.slug === slug)
     
-    if (!articleMeta) {
+    if (!articleMeta || !articleMeta.filename) {
       return null
     }
 
-    // Fetch content from external repository or local fallback
+    // Fetch content from external repository
     let fileContent: string
     try {
       fileContent = await fetchArticleContent(articleMeta.filename)
     } catch (error) {
       console.error(`Error fetching external content for ${articleMeta.filename}:`, error)
-      // Fallback to local file
-      const filePath = path.join(process.cwd(), 'content/guides', articleMeta.filename)
-      
-      if (!fs.existsSync(filePath)) {
-        console.error(`File not found: ${filePath}`)
-        return null
-      }
-      fileContent = fs.readFileSync(filePath, 'utf8')
+      // For build-time, we'll return metadata without content
+      return {
+        ...articleMeta,
+        content: `# ${articleMeta.title}\n\nContent will be loaded from external repository.`
+      } as Article
     }
 
     const { data, content } = matter(fileContent)

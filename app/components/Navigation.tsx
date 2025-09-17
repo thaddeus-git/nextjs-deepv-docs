@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { getAllCategories } from '@/lib/navigation'
 import { useState, useEffect } from 'react'
 import SearchBox from './SearchBox'
-import { Article } from '@/lib/articles'
+import { Article, getAllArticles } from '@/lib/articles'
 
 export default function Navigation() {
   const categories = getAllCategories()
@@ -13,9 +13,9 @@ export default function Navigation() {
   const [articles, setArticles] = useState<Article[]>([])
 
   useEffect(() => {
-    // Load articles from static data for search
-    import('@/content/config/article-index.json')
-      .then(data => setArticles(data.articles as Article[]))
+    // Load articles using the same system as ISR
+    getAllArticles()
+      .then(data => setArticles(data))
       .catch(() => setArticles([]))
   }, [])
 
