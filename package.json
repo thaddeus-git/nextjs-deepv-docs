@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "migrate:content": "node scripts/migrate-content.js",
+    "setup:content-repo": "bash scripts/setup-content-repo.sh",
     "deploy:vercel": "vercel --prod"
   },
   "dependencies": {
