@@ -4,7 +4,7 @@ import { createDevArticleIndex, getLocalArticlesForDev } from './dev-content-fal
 
 const CONTENT_REPO_URL = process.env.NODE_ENV === 'development' 
   ? null  // Force fallback in development
-  : null; // Temporarily force fallback in production until content repo is created
+  : (process.env.CONTENT_REPO_URL || 'https://api.github.com/repos/thaddeus-git/nextjs-deepv-content');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 interface GitHubFile {
@@ -22,8 +22,8 @@ export async function fetchArticleIndex(): Promise<{
   technologies: string[];
   articles: Article[];
 }> {
-  // Always use local fallback until content repository is properly set up
-  if (!CONTENT_REPO_URL || process.env.NODE_ENV === 'development') {
+  // In development, always use local fallback (Next.js best practice)
+  if (process.env.NODE_ENV === 'development' || !CONTENT_REPO_URL) {
     console.log('🔄 Using local development data...');
     return createDevArticleIndex();
   }
