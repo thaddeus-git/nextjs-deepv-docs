@@ -26,7 +26,7 @@ echo "Using content schema version: $SCHEMA_VERSION"
 
 ```yaml
 ---
-title: "string (5-100 characters)"
+title: "string (5-70 characters)"
 slug: "kebab-case-string"
 category: "one of: databases, mobile, programming-languages, system-devops, web-frontend"
 subcategory: "must exist in categories.json for the chosen category"
