@@ -1,8 +1,8 @@
 {
   "_metadata": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "lastUpdated": "2025-09-18",
-    "description": "DeepV Code Content Schema - Complete upstream integration API",
+    "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid & code language support",
     "api_urls": {
       "schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
       "categories": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
@@ -100,7 +100,32 @@
     "content": {
       "min_length": 100,
       "required_heading": "# Main Title",
-      "code_blocks": "Must specify language: ```javascript"
+      "code_blocks": {
+        "requirement": "MUST specify language for all code blocks",
+        "format": "```{language}",
+        "supported_languages": [
+          "javascript", "typescript", "python", "java", "sql", "bash", "shell",
+          "json", "yaml", "xml", "html", "css", "php", "ruby", "go", "rust",
+          "c", "cpp", "csharp", "swift", "kotlin", "dart", "r", "matlab",
+          "mermaid"
+        ],
+        "special_cases": {
+          "mermaid_diagrams": {
+            "language": "mermaid",
+            "supported_types": ["flowchart", "graph", "sequenceDiagram", "classDiagram"],
+            "example": "```mermaid\nflowchart TD\n    A[Start] --> B[Process]\n    B --> C[End]\n```"
+          },
+          "generic_code": {
+            "language": "text",
+            "usage": "For pseudocode or unspecified languages"
+          }
+        },
+        "examples": [
+          "```javascript\nconst data = await fetch('/api/users');\n```",
+          "```sql\nSELECT * FROM users WHERE active = 1;\n```",
+          "```mermaid\nflowchart TD\n    A --> B\n```"
+        ]
+      }
     }
   },
   "output_structure": {
@@ -141,6 +166,39 @@
     "step_5": "Output to staging_paths",
     "step_6": "Optional: curl -s {api_urls.validator} > validate.js && node validate.js staging/guides content-schema.json"
   },
+  "content_quality_standards": {
+    "code_blocks": {
+      "requirement": "ALL code blocks MUST have language specified",
+      "examples": {
+        "correct": [
+          "```javascript\nconsole.log('Hello');\n```",
+          "```sql\nSELECT * FROM users;\n```",
+          "```mermaid\nflowchart TD\n    A --> B\n```"
+        ],
+        "incorrect": [
+          "```\nconsole.log('Hello');\n```",
+          "```\nSELECT * FROM users;\n```"
+        ]
+      }
+    },
+    "mermaid_diagrams": {
+      "when_to_use": "For process flows, system architecture, database relationships",
+      "language": "mermaid",
+      "supported_diagram_types": [
+        "flowchart TD (top-down)",
+        "flowchart LR (left-right)", 
+        "graph TD",
+        "sequenceDiagram",
+        "classDiagram",
+        "erDiagram"
+      ],
+      "rendering": "Automatically rendered as visual diagrams in the website"
+    },
+    "inline_code": {
+      "format": "`code`",
+      "usage": "For variable names, function names, short commands"
+    }
+  },
   "critical_fixes_required": {
     "date_format": {
       "problem": "Upstream generates 6-digit microseconds",
@@ -151,6 +209,11 @@
       "problem": "Titles exceed 70 characters",
       "solution": "Truncate or rephrase to ≤70 characters",
       "reason": "SEO optimization for search results"
+    },
+    "code_block_languages": {
+      "problem": "Code blocks without language specification",
+      "solution": "Always specify language: ```javascript not ```",
+      "reason": "Enables syntax highlighting and better user experience"
     }
   }
 }
