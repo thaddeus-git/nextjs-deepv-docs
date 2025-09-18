@@ -10,9 +10,9 @@ function extractIdFromFilename(filename: string): string {
   return match[1];
 }
 
-// Simple fallback data for development
+// Simple fallback data for development AND production (until content repo is created)
 export function getLocalArticlesForDev(): Article[] {
-  // Hardcoded sample articles based on your temp-files for development
+  // All 12 articles from your temp-files directory
   return [
     // Auto-extract ID from filename to ensure consistency  
     (() => {
@@ -95,6 +95,108 @@ export function getLocalArticlesForDev(): Article[] {
         tags: ["npm", "dependencies", "package-management", "troubleshooting", "node"],
         difficulty: "advanced" as const,
         readTime: 25,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "logit-regression-and-singular-matrix-error-in-python-bbd1fbd5.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "logit-regression-and-singular-matrix-error-in-python",
+        title: "Logit Regression and Singular Matrix Error in Python: 4 Solutions",
+        category: "programming-languages",
+        subcategory: "python",
+        description: "Fix singular matrix errors in logistic regression with practical solutions including regularization, feature selection, and data preprocessing.",
+        tags: ["python", "machine-learning", "logistic-regression", "sklearn", "data-science"],
+        difficulty: "intermediate" as const,
+        readTime: 18,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "why-does-my-javascript-code-receive-a-no-access-control-d0cc8ebb.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "why-does-my-javascript-code-receive-a-no-access-control",
+        title: "Why Does My JavaScript Code Receive a 'No Access Control' Error?",
+        category: "web-frontend",
+        subcategory: "javascript",
+        description: "Understand and fix CORS errors in JavaScript with comprehensive solutions for API calls, fetch requests, and cross-origin issues.",
+        tags: ["javascript", "cors", "api", "fetch", "web-development"],
+        difficulty: "intermediate" as const,
+        readTime: 15,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "representational-state-transfer-rest-and-simple-object-dc385f3c.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "representational-state-transfer-rest-and-simple-object",
+        title: "Representational State Transfer (REST) and Simple Object Access Protocol (SOAP)",
+        category: "web-frontend",
+        subcategory: "api",
+        description: "Complete comparison of REST vs SOAP protocols with practical examples, advantages, and implementation guidelines.",
+        tags: ["rest", "soap", "api", "web-services", "architecture"],
+        difficulty: "intermediate" as const,
+        readTime: 20,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "how-can-apache-camel-be-used-to-monitor-file-changes-ae1d627b.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "how-can-apache-camel-be-used-to-monitor-file-changes",
+        title: "How Can Apache Camel Be Used to Monitor File Changes?",
+        category: "system-devops",
+        subcategory: "integration",
+        description: "Learn to monitor file system changes with Apache Camel using file watchers, polling, and event-driven patterns.",
+        tags: ["apache-camel", "file-monitoring", "integration", "java", "automation"],
+        difficulty: "advanced" as const,
+        readTime: 22,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "how-to-change-font-and-size-of-buttons-and-frame-in-tkinter-5eb2a04f.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "how-to-change-font-and-size-of-buttons-and-frame-in-tkinter",
+        title: "How to Change Font and Size of Buttons and Frame in Tkinter",
+        category: "programming-languages",
+        subcategory: "python",
+        description: "Complete guide to customizing Tkinter widget fonts, sizes, and styling with practical examples and best practices.",
+        tags: ["python", "tkinter", "gui", "font", "styling"],
+        difficulty: "beginner" as const,
+        readTime: 12,
+        lastUpdated: "2025-09-18T07:29:53.000Z", 
+        featured: false,
+        filename
+      };
+    })(),
+    (() => {
+      const filename = "retrieve-data-from-stored-procedure-which-has-multiple-c335a59c.mdx";
+      return {
+        id: extractIdFromFilename(filename),
+        slug: "retrieve-data-from-stored-procedure-which-has-multiple",
+        title: "Retrieve Data from Stored Procedure Which Has Multiple Result Sets",
+        category: "databases",
+        subcategory: "sql",
+        description: "Handle multiple result sets from stored procedures in SQL Server, MySQL, and PostgreSQL with practical examples.",
+        tags: ["sql", "stored-procedures", "database", "result-sets", "sql-server"],
+        difficulty: "intermediate" as const,
+        readTime: 16,
         lastUpdated: "2025-09-18T07:29:53.000Z", 
         featured: false,
         filename
