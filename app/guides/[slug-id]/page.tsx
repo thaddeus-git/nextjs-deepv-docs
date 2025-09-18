@@ -9,40 +9,55 @@ import { Metadata } from 'next'
 export const revalidate = 3600 // Revalidate every hour
 export const dynamicParams = true // Allow dynamic generation of non-prebuilt pages
 
-// Only pre-render featured articles at build time for faster deployment
+// Pre-render all articles for reliable production deployment
 export async function generateStaticParams() {
   try {
     const articles = await getAllArticles()
-    const featuredArticles = articles.filter(article => article.featured).slice(0, 10)
+    // Pre-render ALL articles to ensure reliability
+    // This follows Next.js best practices for small to medium content sets
+    console.log(`📦 Pre-rendering ${articles.length} articles for static generation`)
     
-    return featuredArticles.map((article) => ({
+    return articles.map((article) => ({
       'slug-id': `${article.slug}-${article.id}`,
     }))
   } catch (error) {
     console.error('Error generating static params:', error)
-    return [] // Return empty array if fetching fails
+    // Fallback: return empty array and rely on ISR
+    return []
   }
 }
 
 interface GuidePageProps {
-  params: {
+  params: Promise<{
     'slug-id': string
-  }
+  }>
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
   const resolvedParams = await params
-  const article = await getArticleBySlugId(resolvedParams['slug-id'])
   
-  if (!article || !article.content) {
+  try {
+    const article = await getArticleBySlugId(resolvedParams['slug-id'])
+    
+    if (!article) {
+      console.error(`Article not found for slug-id: ${resolvedParams['slug-id']}`)
+      notFound()
+    }
+
+    if (!article.content) {
+      console.error(`Article content missing for: ${article.title} (${article.id})`)
+      notFound()
+    }
+
+    return (
+      <ArticleLayout article={article}>
+        <MDXRemote source={article.content} />
+      </ArticleLayout>
+    )
+  } catch (error) {
+    console.error(`Error loading article ${resolvedParams['slug-id']}:`, error)
     notFound()
   }
-
-  return (
-    <ArticleLayout article={article}>
-      <MDXRemote source={article.content} />
-    </ArticleLayout>
-  )
 }
 
 // Generate metadata for each article

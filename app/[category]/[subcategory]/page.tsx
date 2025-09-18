@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 interface SubcategoryPageProps {
-  params: { 
+  params: Promise<{ 
     category: string
     subcategory: string 
-  }
+  }>
 }
 
 export async function generateStaticParams() {
