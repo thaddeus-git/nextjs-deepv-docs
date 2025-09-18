@@ -42,7 +42,7 @@ content/staging/
 
 # Keep only the essential content structure  
 !content/config/
-content/config/*.json
+!content/config/categories.json
 
 # Keep project configuration files
 !config/
