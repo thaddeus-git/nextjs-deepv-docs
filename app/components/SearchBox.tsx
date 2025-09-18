@@ -1,14 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import { Article } from '@/lib/articles'
 
 interface SearchBoxProps {
-  articles: Article[]
+  articles?: Article[]
 }
 
 export default function SearchBox({ articles }: SearchBoxProps) {
+  const memoizedArticles = useMemo(() => articles || [], [articles])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Article[]>([])
   const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +34,7 @@ export default function SearchBox({ articles }: SearchBoxProps) {
     }
 
     const searchTerm = query.toLowerCase()
-    const filteredArticles = articles.filter(article => {
+    const filteredArticles = memoizedArticles.filter(article => {
       const tags = Array.isArray(article.tags) ? article.tags : article.tags.split(',').map(t => t.trim())
       
       return article.title.toLowerCase().includes(searchTerm) ||
@@ -43,7 +44,7 @@ export default function SearchBox({ articles }: SearchBoxProps) {
 
     setResults(filteredArticles)
     setIsOpen(filteredArticles.length > 0)
-  }, [query, articles])
+  }, [query, memoizedArticles])
 
   const handleResultClick = () => {
     setQuery('')

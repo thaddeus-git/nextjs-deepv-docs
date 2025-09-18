@@ -7,25 +7,9 @@ const nextConfig: NextConfig = {
   // Enable static optimization
   trailingSlash: false,
   
-  // Configure webpack for better memory usage
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
-    if (config.cache && !dev) {
-      config.cache = Object.freeze({
-        type: 'memory',
-      })
-    }
-    return config
-  },
-  
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: ['@mdx-js/react', 'gray-matter'],
-  },
-  
-  // Memory optimization for large projects
-  eslint: {
-    // Don't run ESLint during build to save memory (run in CI instead)
-    ignoreDuringBuilds: false,
   },
   
   // Configure image optimization

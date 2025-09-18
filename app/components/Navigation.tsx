@@ -1,4 +1,3 @@
-// app/components/Navigation.tsx
 'use client'
 
 import Link from 'next/link'
@@ -13,15 +12,15 @@ export default function Navigation() {
   const [articles, setArticles] = useState<Article[]>([])
 
   useEffect(() => {
-    // Load articles using the same system as ISR
     getAllArticles()
       .then(data => setArticles(data))
       .catch(() => setArticles([]))
   }, [])
 
   return (
-    <nav className="w-64 bg-gray-50 border-r border-gray-200 h-screen overflow-y-auto">
+    <nav className="h-full">
       <div className="p-4">
+        {/* Logo */}
         <Link href="/" className="text-xl font-bold text-gray-900 mb-6 block">
           DeepV Code
         </Link>
@@ -31,6 +30,7 @@ export default function Navigation() {
           <SearchBox articles={articles} />
         </div>
         
+        {/* Categories */}
         <div className="space-y-2">
           {categories.map(category => (
             <div key={category.id}>
@@ -70,6 +70,7 @@ export default function Navigation() {
           ))}
         </div>
         
+        {/* All Guides */}
         <div className="mt-6 pt-6 border-t border-gray-200">
           <Link 
             href="/guides" 

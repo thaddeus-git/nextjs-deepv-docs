@@ -142,3 +142,48 @@ body {
 .prose pre::-webkit-scrollbar-thumb:hover {
   background: #9CA3AF;
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .prose {
+    @apply text-base px-4;
+  }
+  
+  .prose h1 {
+    @apply text-2xl mb-6;
+  }
+  
+  .prose h2 {
+    @apply text-xl mt-8 mb-4;
+  }
+  
+  .prose h3 {
+    @apply text-lg mt-6 mb-3;
+  }
+  
+  .prose pre {
+    @apply p-4 text-sm rounded-lg;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  
+  .prose code {
+    @apply text-xs;
+  }
+  
+  .prose table {
+    @apply text-sm;
+  }
+  
+  .prose th,
+  .prose td {
+    @apply px-2 py-2;
+  }
+}
+
+/* Touch improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+  button, a {
+    @apply min-h-[44px];
+  }
+}

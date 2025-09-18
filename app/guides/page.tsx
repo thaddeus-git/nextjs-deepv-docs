@@ -2,6 +2,7 @@ import { getAllArticles } from '@/lib/articles'
 import { getAllCategories } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import MobileMenu from '../components/MobileMenu'
 
 export const metadata = {
   title: 'All Guides | DeepV Code',
@@ -41,6 +42,7 @@ export default async function GuidesPage() {
 
     return (
       <div className="max-w-6xl mx-auto px-6 py-8">
+        <MobileMenu />
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">All Guides</h1>
