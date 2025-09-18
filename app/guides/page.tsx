@@ -103,7 +103,7 @@ export default async function GuidesPage() {
                     
                     <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
                       <Link 
-                        href={`/guides/${article.slug}`}
+                        href={`/guides/${article.slug}-${article.id}`}
                         className="hover:text-blue-600 transition-colors"
                       >
                         {article.title}

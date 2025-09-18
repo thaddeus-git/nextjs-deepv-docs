@@ -73,7 +73,7 @@ export default function SearchBox({ articles }: SearchBoxProps) {
             {results.map((article) => (
               <Link
                 key={article.slug}
-                href={`/guides/${article.slug}`}
+                href={`/guides/${article.slug}-${article.id}`}
                 onClick={handleResultClick}
                 className="block px-4 py-3 hover:bg-gray-50 transition-colors"
               >

@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import { fetchArticleIndex, fetchArticleContent } from './content-fetcher'
 
 export interface Article {
+  id: string           // 8-character hex ID extracted from filename
   slug: string
   title: string
   category: string
@@ -60,6 +61,51 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     } as Article
   } catch (error) {
     console.error(`Error loading article ${slug}:`, error)
+    return null
+  }
+}
+
+export async function getArticleBySlugId(slugId: string): Promise<Article | null> {
+  try {
+    // Parse slug-id format: "slug-8charhexid"
+    const match = slugId.match(/^(.+)-([a-f0-9]{8})$/)
+    if (!match) {
+      console.error(`Invalid slug-id format: ${slugId}`)
+      return null
+    }
+    
+    const [, slug, id] = match
+    
+    // Get article metadata from index
+    const index = await fetchArticleIndex()
+    const articleMeta = index.articles.find(a => a.slug === slug && a.id === id)
+    
+    if (!articleMeta || !articleMeta.filename) {
+      return null
+    }
+
+    // Fetch content from external repository
+    let fileContent: string
+    try {
+      fileContent = await fetchArticleContent(articleMeta.filename)
+    } catch (error) {
+      console.error(`Error fetching external content for ${articleMeta.filename}:`, error)
+      // For build-time, we'll return metadata without content
+      return {
+        ...articleMeta,
+        content: `# ${articleMeta.title}\n\nContent will be loaded from external repository.`
+      } as Article
+    }
+
+    const { data, content } = matter(fileContent)
+
+    return {
+      ...articleMeta,
+      content,
+      ...data // Allow frontmatter to override
+    } as Article
+  } catch (error) {
+    console.error(`Error loading article ${slugId}:`, error)
     return null
   }
 }

@@ -78,7 +78,7 @@ export default async function HomePage() {
                     </div>
                     
                     <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                      <Link href={`/guides/${article.slug}`}>
+                      <Link href={`/guides/${article.slug}-${article.id}`}>
                         {article.title}
                       </Link>
                     </h3>
@@ -94,7 +94,7 @@ export default async function HomePage() {
                         {article.difficulty}
                       </span>
                       <Link 
-                        href={`/guides/${article.slug}`}
+                        href={`/guides/${article.slug}-${article.id}`}
                         className="text-blue-600 hover:text-blue-800 font-medium text-sm group-hover:translate-x-1 transition-transform"
                       >
                         Read →

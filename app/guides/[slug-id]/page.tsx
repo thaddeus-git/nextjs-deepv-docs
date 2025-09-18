@@ -1,5 +1,5 @@
-// app/guides/[slug]/page.tsx
-import { getArticleBySlug, getAllArticles } from '@/lib/articles'
+// app/guides/[slug-id]/page.tsx
+import { getArticleBySlugId, getAllArticles } from '@/lib/articles'
 import ArticleLayout from '@/app/components/ArticleLayout'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
     const featuredArticles = articles.filter(article => article.featured).slice(0, 10)
     
     return featuredArticles.map((article) => ({
-      slug: article.slug,
+      'slug-id': `${article.slug}-${article.id}`,
     }))
   } catch (error) {
     console.error('Error generating static params:', error)
@@ -26,13 +26,13 @@ export async function generateStaticParams() {
 
 interface GuidePageProps {
   params: {
-    slug: string
+    'slug-id': string
   }
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
   const resolvedParams = await params
-  const article = await getArticleBySlug(resolvedParams.slug)
+  const article = await getArticleBySlugId(resolvedParams['slug-id'])
   
   if (!article || !article.content) {
     notFound()
@@ -48,7 +48,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 // Generate metadata for each article
 export async function generateMetadata({ params }: GuidePageProps): Promise<Metadata> {
   const resolvedParams = await params
-  const article = await getArticleBySlug(resolvedParams.slug)
+  const article = await getArticleBySlugId(resolvedParams['slug-id'])
   
   if (!article) {
     return {

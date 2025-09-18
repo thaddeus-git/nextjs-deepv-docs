@@ -140,7 +140,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                 key={article.slug}
                 className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow"
               >
-                <Link href={`/guides/${article.slug}`} className="block">
+                <Link href={`/guides/${article.slug}-${article.id}`} className="block">
                   <div className="flex items-start justify-between mb-3">
                     <h2 className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors">
                       {article.title}

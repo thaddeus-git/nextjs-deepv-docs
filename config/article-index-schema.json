@@ -115,6 +115,17 @@
     "filename_id_match": "article.id must match the hex ID in article.filename",
     "frontmatter_sync": "All article fields must match corresponding MDX frontmatter"
   },
+  "url_structure_requirements": {
+    "mandatory_pattern": "/guides/{slug}-{id}",
+    "description": "CRITICAL: All article URLs MUST follow this exact pattern",
+    "slug_source": "article.slug field (kebab-case)",
+    "id_source": "article.id field (8-char hex from filename)",
+    "example_url": "/guides/javascript-guide-beginners-abc12345",
+    "next_js_route": "app/guides/[slug-id]/page.tsx",
+    "parsing_function": "getArticleBySlugId(slugId: string)",
+    "link_generation": "href={`/guides/${article.slug}-${article.id}`}",
+    "validation": "URL must parse to valid slug and 8-char hex ID"
+  },
   "example_format": {
     "lastUpdated": "2025-09-18T07:31:17.000Z",
     "totalArticles": 2,

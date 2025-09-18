@@ -129,7 +129,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     {subcategoryArticles.slice(0, 3).map((article) => (
                       <Link
                         key={article.slug}
-                        href={`/guides/${article.slug}`}
+                        href={`/guides/${article.slug}-${article.id}`}
                         className="block bg-white rounded-lg p-4 hover:shadow-md transition-shadow"
                       >
                         <div className="flex items-start justify-between">
