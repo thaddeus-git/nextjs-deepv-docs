@@ -1,6 +1,6 @@
 // Content fetcher for external content repository
 import { Article } from './articles';
-import { createDevArticleIndex, getLocalArticlesForDev } from './dev-content-fallback';
+import { createDevArticleIndex } from './dev-content-fallback';
 
 const CONTENT_REPO_URL = process.env.NODE_ENV === 'development' 
   ? null  // Force fallback in development
@@ -83,13 +83,20 @@ export async function fetchArticleContent(filename: string): Promise<string> {
   } catch (error) {
     console.error(`Error fetching article content for ${filename}:`, error);
     
-    // In development, try to find the file in temp-files
-    if (process.env.NODE_ENV === 'development') {
-      const localArticles = getLocalArticlesForDev();
-      const localArticle = localArticles.find(a => a.filename === filename);
-      if (localArticle && localArticle.content) {
-        console.log(`🔄 Using local content for ${filename}`);
-        return localArticle.content;
+    // Server-side fallback to temp-files directory
+    if (typeof window === 'undefined') {
+      try {
+        // Dynamic import for Node.js modules (server-side only)
+        const { readFileSync, existsSync } = eval('require')('fs');
+        const { join } = eval('require')('path');
+        
+        const tempPath = join(process.cwd(), 'temp-files', 'guides', filename);
+        if (existsSync(tempPath)) {
+          console.log(`🔄 Using temp-files content for ${filename}`);
+          return readFileSync(tempPath, 'utf8');
+        }
+      } catch (fsError) {
+        console.error(`Error reading temp-files for ${filename}:`, fsError);
       }
     }
     
