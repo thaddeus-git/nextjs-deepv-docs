@@ -3,7 +3,7 @@ import { getArticlesByCategory } from '@/lib/articles'
 import { getAllCategoriesAsync, getAllCategories } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import MobileMenu from '../components/MobileMenu'
+
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>
@@ -73,7 +73,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <MobileMenu />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Category Header */}
         <div className="mb-8">

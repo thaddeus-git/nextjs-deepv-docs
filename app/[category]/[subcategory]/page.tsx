@@ -3,7 +3,7 @@ import { getArticlesByCategory } from '@/lib/articles'
 import { getAllCategoriesAsync, getAllCategories } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import MobileMenu from '../../components/MobileMenu'
+
 
 interface SubcategoryPageProps {
   params: Promise<{ 
@@ -92,7 +92,6 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
 
   return (
     <div className="min-h-screen bg-white">
-      <MobileMenu />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6">
