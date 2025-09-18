@@ -1,6 +1,6 @@
 // app/[category]/page.tsx
 import { getArticlesByCategory } from '@/lib/articles'
-import { getAllCategoriesAsync } from '@/lib/navigation'
+import { getAllCategoriesAsync, getAllCategories } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -9,8 +9,23 @@ interface CategoryPageProps {
 }
 
 export async function generateStaticParams() {
-  const categories = await getAllCategoriesAsync()
-  return categories.map((category) => ({
+  try {
+    const categories = await getAllCategoriesAsync()
+    if (categories.length > 0) {
+      return categories.map((category) => ({
+        category: category.id,
+      }))
+    }
+  } catch (error) {
+    console.error('Failed to fetch categories for static generation:', error)
+  }
+  
+  // Fallback to hardcoded categories to ensure routes are always generated (Next.js best practice)
+  const { getAllCategories } = await import('@/lib/navigation')
+  const fallbackCategories = getAllCategories()
+  console.log('🔄 Using fallback categories for static generation:', fallbackCategories.map(c => c.id))
+  
+  return fallbackCategories.map((category) => ({
     category: category.id,
   }))
 }
@@ -34,7 +49,13 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params
-  const categories = await getAllCategoriesAsync()
+  
+  // Try async first, fallback to sync categories
+  let categories = await getAllCategoriesAsync()
+  if (categories.length === 0) {
+    categories = getAllCategories()
+  }
+  
   const category = categories.find(cat => cat.id === resolvedParams.category)
   
   if (!category) {

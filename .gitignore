@@ -114,4 +114,7 @@ dist
 
 # Temporary folders
 tmp/
-temp/.deepvcode/
+temp/
+
+# DeepV Code CLI files
+.deepvcode/.deepvcode/

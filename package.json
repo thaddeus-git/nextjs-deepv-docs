@@ -9,7 +9,6 @@
     "lint": "eslint",
     "migrate:content": "node scripts/migrate-content.js",
     "setup:content-repo": "bash scripts/setup-content-repo.sh",
-    
     "validate:content": "node scripts/validate-content.js ../nextjs-deepv-content/staging/guides ./config/content-schema.json",
     "validate:index": "node scripts/validate-article-index.js ../nextjs-deepv-content/staging/config/article-index-update.json ./config/article-index-schema.json ./content/config/categories.json",
     "validate:all": "npm run validate:content && npm run validate:index",
@@ -21,6 +20,7 @@
     "gray-matter": "^4.0.3",
     "next": "15.5.3",
     "next-mdx-remote": "^5.0.0",
+    "playwright": "^1.55.0",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },

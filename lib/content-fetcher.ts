@@ -1,7 +1,10 @@
 // Content fetcher for external content repository
 import { Article } from './articles';
+import { createDevArticleIndex, getLocalArticlesForDev } from './dev-content-fallback';
 
-const CONTENT_REPO_URL = process.env.CONTENT_REPO_URL || 'https://api.github.com/repos/YOUR_USERNAME/nextjs-deepv-content';
+const CONTENT_REPO_URL = process.env.NODE_ENV === 'development' 
+  ? null  // Force fallback in development
+  : (process.env.CONTENT_REPO_URL || 'https://api.github.com/repos/thaddeus-git/nextjs-deepv-content');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 interface GitHubFile {
@@ -19,6 +22,12 @@ export async function fetchArticleIndex(): Promise<{
   technologies: string[];
   articles: Article[];
 }> {
+  // In development, always use local fallback (Next.js best practice)
+  if (process.env.NODE_ENV === 'development' || !CONTENT_REPO_URL) {
+    console.log('🔄 Using local development data...');
+    return createDevArticleIndex();
+  }
+
   try {
     const headers: Record<string, string> = {
       'Accept': 'application/vnd.github.v3+json',
@@ -28,7 +37,7 @@ export async function fetchArticleIndex(): Promise<{
       headers['Authorization'] = `token ${GITHUB_TOKEN}`;
     }
 
-    // Fetch the article index file
+    // Fetch the article index file  
     const response = await fetch(`${CONTENT_REPO_URL}/contents/config/article-index.json`, {
       headers,
       next: { revalidate: 300 } // Cache for 5 minutes
@@ -43,14 +52,10 @@ export async function fetchArticleIndex(): Promise<{
     return JSON.parse(content);
   } catch (error) {
     console.error('Error fetching article index:', error);
-    // Return empty structure for build-time when external content is not available
-    return {
-      lastUpdated: new Date().toISOString(),
-      totalArticles: 0,
-      categories: [],
-      technologies: [],
-      articles: []
-    }
+    
+    // Fallback to local data
+    console.log('🔄 Falling back to local data...');
+    return createDevArticleIndex();
   }
 }
 
@@ -77,6 +82,17 @@ export async function fetchArticleContent(filename: string): Promise<string> {
     return await response.text();
   } catch (error) {
     console.error(`Error fetching article content for ${filename}:`, error);
+    
+    // In development, try to find the file in temp-files
+    if (process.env.NODE_ENV === 'development') {
+      const localArticles = getLocalArticlesForDev();
+      const localArticle = localArticles.find(a => a.filename === filename);
+      if (localArticle && localArticle.content) {
+        console.log(`🔄 Using local content for ${filename}`);
+        return localArticle.content;
+      }
+    }
+    
     // No local fallback for article content in production build
     throw new Error(`Article not found: ${filename}`)
   }

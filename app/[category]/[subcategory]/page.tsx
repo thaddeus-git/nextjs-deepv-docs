@@ -1,6 +1,6 @@
 // app/[category]/[subcategory]/page.tsx
 import { getArticlesByCategory } from '@/lib/articles'
-import { getAllCategoriesAsync } from '@/lib/navigation'
+import { getAllCategoriesAsync, getAllCategories } from '@/lib/navigation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -13,9 +13,29 @@ interface SubcategoryPageProps {
 
 export async function generateStaticParams() {
   const params: { category: string; subcategory: string }[] = []
-  const categories = await getAllCategoriesAsync()
   
-  categories.forEach((category) => {
+  try {
+    const categories = await getAllCategoriesAsync()
+    if (categories.length > 0) {
+      categories.forEach((category) => {
+        category.subcategories.forEach((subcategory) => {
+          params.push({
+            category: category.id,
+            subcategory: subcategory.id,
+          })
+        })
+      })
+      return params
+    }
+  } catch (error) {
+    console.error('Failed to fetch categories for subcategory static generation:', error)
+  }
+  
+  // Fallback to hardcoded categories
+  const { getAllCategories } = await import('@/lib/navigation')
+  const fallbackCategories = getAllCategories()
+  
+  fallbackCategories.forEach((category) => {
     category.subcategories.forEach((subcategory) => {
       params.push({
         category: category.id,
@@ -24,6 +44,7 @@ export async function generateStaticParams() {
     })
   })
   
+  console.log('🔄 Using fallback categories for subcategory static generation')
   return params
 }
 
@@ -47,7 +68,13 @@ export async function generateMetadata({ params }: SubcategoryPageProps) {
 
 export default async function SubcategoryPage({ params }: SubcategoryPageProps) {
   const resolvedParams = await params
-  const categories = await getAllCategoriesAsync()
+  
+  // Try async first, fallback to sync categories
+  let categories = await getAllCategoriesAsync()
+  if (categories.length === 0) {
+    categories = getAllCategories()
+  }
+  
   const category = categories.find(cat => cat.id === resolvedParams.category)
   const subcategory = category?.subcategories.find(sub => sub.id === resolvedParams.subcategory)
   
