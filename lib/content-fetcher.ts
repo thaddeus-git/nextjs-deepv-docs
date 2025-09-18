@@ -2,9 +2,7 @@
 import { Article } from './articles';
 import { createDevArticleIndex } from './dev-content-fallback';
 
-const CONTENT_REPO_URL = process.env.NODE_ENV === 'development' 
-  ? null  // Force fallback in development
-  : (process.env.CONTENT_REPO_URL || 'https://api.github.com/repos/thaddeus-git/nextjs-deepv-content');
+const CONTENT_REPO_URL = process.env.CONTENT_REPO_URL || 'https://api.github.com/repos/thaddeus-git/nextjs-deepv-content';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 interface GitHubFile {
