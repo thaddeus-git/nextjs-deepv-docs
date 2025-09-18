@@ -2,6 +2,7 @@
 import { getArticleBySlugId, getAllArticles } from '@/lib/articles'
 import ArticleLayout from '@/app/components/ArticleLayout'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/app/components/MDXComponents'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
@@ -51,7 +52,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
     return (
       <ArticleLayout article={article}>
-        <MDXRemote source={article.content} />
+        <MDXRemote 
+          source={article.content} 
+          components={mdxComponents}
+        />
       </ArticleLayout>
     )
   } catch (error) {
