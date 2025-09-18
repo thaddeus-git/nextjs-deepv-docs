@@ -10,6 +10,9 @@
     "migrate:content": "node scripts/migrate-content.js",
     "setup:content-repo": "bash scripts/setup-content-repo.sh",
     
+    "validate:content": "node scripts/validate-content.js ../nextjs-deepv-content/staging/guides ./config/content-schema.json",
+    "validate:index": "node scripts/validate-article-index.js ../nextjs-deepv-content/staging/config/article-index-update.json ./config/article-index-schema.json ./content/config/categories.json",
+    "validate:all": "npm run validate:content && npm run validate:index",
     "promote:content": "node scripts/promote-content.js ../nextjs-deepv-content",
     "deploy:vercel": "vercel --prod"
   },

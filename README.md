@@ -9,6 +9,25 @@
 
 DeepV Code is a Next.js 15 technical documentation platform that transforms Stack Overflow content into enterprise-grade, SEO-optimized articles using AI-powered content curation. Built for infinite scalability with ISR (Incremental Static Regeneration) architecture.
 
+# 🎯 Project Overview
+
+**Goal:**  
+Define the authoritative source and requirements for content generation that integrates with the **DeepV Code Next.js ISR architecture**.
+
+**Problem:**  
+Current upstream content generation creates validation errors due to missing schema definitions and unclear authority/ownership of configuration data.
+
+---
+
+
+## Repository Roles & Ownership
+
+| Repository                            | Role                  | Authority                    | Responsibility                                  |
+|---------------------------------------|-----------------------|------------------------------|-------------------------------------------------|
+| `nextjs-deepv-docs`                   | 🏛️ Schema Authority   | Defines content requirements | Application needs, validation rules, categories |
+| `nextjs-deepv-content`                | 📦 Content Storage    | Stores validated content     | Production content, article index               |
+| `deepv-stackoverflow-workflow-complete` | 🤖 Content Generator | Follows schema requirements  | Generates compliant content                     |
+
 ## 🏗️ **Architecture Overview**
 
 ### **Repositories**

@@ -6,7 +6,27 @@
     "api_urls": {
       "schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
       "categories": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
-      "validator": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-content.js"
+      "article_index_schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/article-index-schema.json",
+      "validator": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-content.js",
+      "index_validator": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-article-index.js"
+    }
+  },
+  "article_schema": {
+    "frontmatter_required": [
+      "title", "slug", "category", "subcategory", 
+      "description", "tags", "difficulty", "readTime", "lastUpdated"
+    ],
+    "frontmatter_types": {
+      "title": "string (5-70 characters)",
+      "slug": "string (kebab-case)",
+      "category": "enum",
+      "subcategory": "string",
+      "description": "string (20-200 characters)",
+      "tags": "array|string",
+      "difficulty": "enum (beginner|intermediate|advanced)",
+      "readTime": "number (1-60)",
+      "lastUpdated": "ISO date string",
+      "featured": "boolean"
     }
   },
   "requirements": {
