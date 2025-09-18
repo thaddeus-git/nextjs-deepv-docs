@@ -1,55 +1,136 @@
 {
   "_metadata": {
-    "version": "1.0.0",
-    "source": "nextjs-deepv-docs/config/content-schema.json",
-    "lastUpdated": "2024-09-18",
-    "description": "Authoritative content schema for DeepV Code articles"
-  },
-  "article_schema": {
-    "filename_format": "{descriptive-title}-{uniqueId}.mdx",
-    "frontmatter_required": [
-      "title",
-      "slug", 
-      "category",
-      "subcategory",
-      "description",
-      "tags",
-      "difficulty",
-      "readTime",
-      "lastUpdated"
-    ],
-    "frontmatter_optional": [
-      "featured",
-      "filename"
-    ],
-    "frontmatter_types": {
-      "title": "string (5-70 characters)",
-      "slug": "string",
-      "category": "string", 
-      "subcategory": "string",
-      "description": "string (for SEO)",
-      "tags": "string[] | string",
-      "difficulty": "'beginner' | 'intermediate' | 'advanced'",
-      "readTime": "number",
-      "lastUpdated": "ISO date string",
-      "featured": "boolean",
-      "filename": "string"
+    "version": "2.0.0",
+    "lastUpdated": "2025-09-18",
+    "description": "DeepV Code Content Schema - Complete upstream integration API",
+    "api_urls": {
+      "schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
+      "categories": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
+      "validator": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-content.js"
     }
   },
-  "workflow_paths": {
-    "staging": {
+  "requirements": {
+    "frontmatter": {
+      "required_fields": [
+        "title", "slug", "category", "subcategory", 
+        "description", "tags", "difficulty", "readTime", "lastUpdated"
+      ],
+      "optional_fields": ["featured"],
+      "validation_rules": {
+        "title": {
+          "type": "string",
+          "min_length": 5,
+          "max_length": 70,
+          "description": "SEO optimized length"
+        },
+        "slug": {
+          "type": "string", 
+          "pattern": "^[a-z0-9-]+$",
+          "description": "kebab-case format"
+        },
+        "category": {
+          "type": "enum",
+          "values": ["databases", "mobile", "programming-languages", "system-devops", "web-frontend"],
+          "description": "Must exist in categories.json"
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Must be valid for chosen category (see categories.json)"
+        },
+        "description": {
+          "type": "string",
+          "min_length": 20,
+          "max_length": 200,
+          "description": "Essential for SEO"
+        },
+        "tags": {
+          "type": ["array", "string"],
+          "description": "Array of strings OR comma-separated string"
+        },
+        "difficulty": {
+          "type": "enum",
+          "values": ["beginner", "intermediate", "advanced"]
+        },
+        "readTime": {
+          "type": "number",
+          "min": 1,
+          "max": 60,
+          "description": "Minutes to read"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "ISO 8601 with 3-digit milliseconds + Z",
+          "example": "2024-09-18T12:30:00.000Z",
+          "validation": "Must match JavaScript new Date().toISOString()"
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "filename": {
+      "pattern": "^[a-z0-9-]+-[a-f0-9]{8}\\.mdx$",
+      "format": "{descriptive-title}-{8-char-hex-id}.mdx",
+      "examples": [
+        "how-to-parse-json-javascript-abc12345.mdx",
+        "react-hooks-guide-def67890.mdx"
+      ]
+    },
+    "content": {
+      "min_length": 100,
+      "required_heading": "# Main Title",
+      "code_blocks": "Must specify language: ```javascript"
+    }
+  },
+  "output_structure": {
+    "staging_paths": {
       "articles": "/nextjs-deepv-content/staging/guides/",
       "index": "/nextjs-deepv-content/staging/config/article-index-update.json"
     },
-    "production": {
-      "articles": "/nextjs-deepv-content/guides/",
-      "index": "/nextjs-deepv-content/config/article-index.json"
+    "article_index_format": {
+      "lastUpdated": "ISO 8601 string",
+      "totalArticles": "number (existing + new)",
+      "categories": "array of category IDs used",
+      "technologies": "array of technology names", 
+      "articles": [
+        {
+          "id": "8-char hex ID",
+          "title": "article title",
+          "slug": "kebab-case-slug",
+          "category": "category ID",
+          "subcategory": "subcategory ID", 
+          "difficulty": "beginner|intermediate|advanced",
+          "technology": "human-readable tech name",
+          "readTime": "number",
+          "publishedAt": "YYYY-MM-DD",
+          "featured": "boolean",
+          "description": "SEO description",
+          "tags": "array of strings",
+          "filename": "article-filename.mdx",
+          "lastUpdated": "ISO 8601 string"
+        }
+      ]
     }
   },
-  "validation_rules": {
-    "unique_id": "deterministic from Stack Overflow ID",
-    "slug_format": "kebab-case",
-    "category_validation": "must exist in categories.json",
-    "description_seo": "essential for search engines"
+  "integration_workflow": {
+    "step_1": "curl -s {api_urls.schema} > content-schema.json",
+    "step_2": "curl -s {api_urls.categories} > categories.json", 
+    "step_3": "Generate content following requirements",
+    "step_4": "Create complete article-index-update.json (existing + new)",
+    "step_5": "Output to staging_paths",
+    "step_6": "Optional: curl -s {api_urls.validator} > validate.js && node validate.js staging/guides content-schema.json"
+  },
+  "critical_fixes_required": {
+    "date_format": {
+      "problem": "Upstream generates 6-digit microseconds",
+      "solution": "Use JavaScript: new Date().toISOString()",
+      "correct_format": "2024-09-18T12:30:00.000Z (3-digit milliseconds)"
+    },
+    "title_length": {
+      "problem": "Titles exceed 70 characters",
+      "solution": "Truncate or rephrase to ≤70 characters",
+      "reason": "SEO optimization for search results"
+    }
   }
 }
