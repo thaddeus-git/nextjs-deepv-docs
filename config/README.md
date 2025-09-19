@@ -1,83 +1,89 @@
 # DeepV Code Configuration
 
-This directory contains all project configuration files and schemas for the DeepV Code platform.
+This directory contains the essential configuration files and schemas for the DeepV Code platform.
 
-## Core Schemas
+## 🎯 **For Upstream: Start Here**
 
-### Required for Content Generation
-- `content-schema.json` - Complete content requirements, code language specifications, Mermaid support
-- `article-index-schema.json` - Article index structure, URL patterns, consistency requirements
-- `categories.json` - Valid category/subcategory combinations (in `/content/config/`)
-
-### Project Information  
-- `project.json` - Core project metadata, architecture, environment variables
-- `tech-stack.json` - Technology stack, dependencies, deployment configuration
-
-## Comprehensive Guides
-
-### Integration & Templates
-- `upstream-integration-guide.json` - Complete upstream integration workflow with all schema URLs
-- `content-templates.json` - Ready-to-use MDX templates, code examples, frontmatter examples
-- `seo-metadata-schema.json` - SEO optimization requirements, title/description guidelines
-- `validation-checklist.json` - Quality assurance checklist, validation workflows
-
-## Usage
-
-These configuration files serve as the single source of truth for:
-
-1. **Content Generation** - Upstream systems fetch schemas to understand all requirements
-2. **Validation** - Scripts validate content against these schemas before deployment
-3. **SEO Optimization** - Guidelines ensure search engine optimization best practices
-4. **Quality Assurance** - Checklists maintain consistent content quality
-5. **Development** - Team reference for project specifications
-
-## Upstream Integration URLs
-
-All schemas are available via GitHub raw URLs:
-
+**`upstream-schemas-index.json`** - Master index with all schemas your upstream needs
 ```bash
-# Core Requirements
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/article-index-schema.json  
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json
-
-# Integration Guide
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/upstream-integration-guide.json
-
-# Templates & SEO
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-templates.json
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/seo-metadata-schema.json
-
-# Quality Assurance
-curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/validation-checklist.json
+curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/upstream-schemas-index.json
 ```
 
-## Schema Features
+## Essential Schemas (5 files)
 
-### Content Schema v2.2.0
-- ✅ 100+ supported programming languages with examples
-- ✅ Mermaid diagram specifications (flowchart, sequence, class)
-- ✅ Zero-tolerance code block language requirements
-- ✅ Comprehensive validation rules
+### Required for Content Generation
+1. **`content-schema.json` v3.0.0** - Complete content requirements
+   - Frontmatter structure and validation
+   - Code language specifications (100+ languages)
+   - Mermaid diagram support  
+   - SEO optimization requirements
+   - Content quality standards
 
-### SEO Schema
-- ✅ Title optimization (5-70 chars, keyword placement)
-- ✅ Description optimization (20-200 chars, user intent)
-- ✅ Tag strategies (3-8 tags, technology + content type)
-- ✅ URL structure requirements
+2. **`content-templates.json`** - Ready-to-use examples
+   - Complete MDX article templates
+   - Code examples for major languages
+   - Frontmatter examples by category
+   - Quality checklists and best practices
 
-### Templates
-- ✅ Complete MDX article templates
-- ✅ Code examples for major languages
-- ✅ Frontmatter examples by category
-- ✅ Quality checklist templates
+3. **`article-index-schema.json`** - Article indexing
+   - Index structure and consistency requirements
+   - URL patterns (/guides/{slug}-{id})
+   - Metadata validation rules
 
-## Version Control
+4. **`categories.json`** - Navigation structure (in `/content/config/`)
+   - Valid category/subcategory combinations
+   - UI color schemes
+   - Site navigation hierarchy
 
-Each schema includes:
-- Version numbers for compatibility tracking
-- Last updated timestamps
-- Change descriptions
-- Backward compatibility notes
+### Project Context
+5. **`project.json`** - Project metadata
+   - Architecture details (ISR, Vercel)
+   - Environment variables
+   - Repository structure
 
-This ensures upstream systems can safely consume schema updates without breaking existing workflows.
+6. **`tech-stack.json`** - Technology stack
+   - Next.js 15 configuration
+   - Dependencies and deployment setup
+
+## Upstream Integration
+
+### Quick Start
+```bash
+# Get the master index (contains all URLs)
+curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/upstream-schemas-index.json > schemas-index.json
+
+# Download essential schemas
+curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json > content-schema.json
+curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-templates.json > content-templates.json
+curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json > categories.json
+```
+
+### Critical Requirements
+- ✅ **Code blocks MUST specify language** (`javascript`, `python`, `mermaid`)
+- ✅ **SEO optimization** (titles 5-70 chars, descriptions 20-200 chars)
+- ✅ **Valid categories** (must exist in categories.json)
+- ✅ **URL structure** (/guides/{slug}-{id} pattern)
+- ✅ **Mermaid diagrams** (use `mermaid` language tag)
+
+## Validation Tools
+
+Available validation scripts:
+- `validate-content.js` - Validates MDX files against schemas
+- `validate-article-index.js` - Validates article index consistency
+
+## Architecture
+
+- **Platform:** Next.js 15 with App Router
+- **Deployment:** Vercel with ISR
+- **Content:** External GitHub repository
+- **Scale:** 10K+ articles supported
+- **Performance:** 5-minute ISR revalidation
+
+## Schema Versions
+
+- Content Schema: v3.0.0 (includes merged SEO requirements)
+- Article Index: v1.0.0 
+- Templates: v1.0.0
+- Categories: stable
+
+All schemas include version tracking for safe upstream integration.

@@ -1,8 +1,8 @@
 {
   "_metadata": {
-    "version": "2.2.0",
+    "version": "3.0.0",
     "lastUpdated": "2025-09-18",
-    "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid & code language support",
+    "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid, code language, and SEO optimization",
     "api_urls": {
       "schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
       "categories": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
@@ -281,6 +281,56 @@
       ],
       "result": "Proper syntax highlighting improves readability by 300%",
       "user_experience": "Colored syntax makes code much easier to understand"
+    }
+  },
+  "seo_optimization_requirements": {
+    "title_seo": {
+      "min_length": 5,
+      "max_length": 70,
+      "optimal_length": "50-60 characters",
+      "requirements": [
+        "Include primary keyword near beginning",
+        "Use action words (How to, Guide, Tutorial)",
+        "Be specific and descriptive",
+        "Avoid clickbait or misleading titles"
+      ],
+      "patterns": {
+        "tutorial": "How to {action} in {technology}: {outcome}",
+        "guide": "{Technology} {Topic}: Complete Guide for {audience}",
+        "comparison": "{Technology A} vs {Technology B}: {aspect} Comparison"
+      }
+    },
+    "description_seo": {
+      "min_length": 20,
+      "max_length": 200,
+      "optimal_length": "150-160 characters",
+      "structure": "{what_readers_learn} + {key_benefit} + {target_audience}",
+      "requirements": [
+        "Include primary keyword naturally",
+        "State what readers will learn",
+        "Mention key benefit or outcome",
+        "Specify target audience level"
+      ]
+    },
+    "tags_seo": {
+      "min_tags": 3,
+      "max_tags": 8,
+      "optimal_count": "4-6 tags",
+      "required_types": [
+        "Primary technology (javascript, python, sql)",
+        "Content type (tutorial, guide, reference)",
+        "Skill level (beginner, intermediate, advanced)",
+        "Topic category (web-development, devops)"
+      ]
+    },
+    "url_seo": {
+      "pattern": "/guides/{slug}-{id}",
+      "slug_requirements": [
+        "Use kebab-case (lowercase with hyphens)",
+        "Include primary keyword",
+        "Keep under 50 characters",
+        "Avoid stop words when possible"
+      ]
     }
   },
   "critical_fixes_required": {
