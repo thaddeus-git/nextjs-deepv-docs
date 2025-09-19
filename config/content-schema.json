@@ -184,9 +184,24 @@
     }
   },
   "output_structure": {
+    "content_repository": {
+      "name": "nextjs-deepv-content",
+      "url": "git@github.com:thaddeus-git/nextjs-deepv-content.git",
+      "description": "External content repository for ISR architecture"
+    },
     "staging_paths": {
-      "articles": "/nextjs-deepv-content/staging/guides/",
-      "index": "/nextjs-deepv-content/staging/config/article-index-update.json"
+      "description": "Paths within the content repository for staging new content",
+      "base_directory": "/nextjs-deepv-content",
+      "articles_staging": "/nextjs-deepv-content/staging/guides/",
+      "index_staging": "/nextjs-deepv-content/staging/config/article-index-update.json",
+      "production_articles": "/nextjs-deepv-content/guides/",
+      "production_index": "/nextjs-deepv-content/config/article-index.json"
+    },
+    "workflow": {
+      "step_1": "Generate content to staging paths",
+      "step_2": "Validate content in staging",
+      "step_3": "Move from staging to production paths", 
+      "step_4": "Git commit and push triggers ISR revalidation"
     },
     "article_index_format": {
       "lastUpdated": "ISO 8601 string",

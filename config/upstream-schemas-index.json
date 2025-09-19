@@ -111,15 +111,17 @@
     },
     "step_4": {
       "action": "Generate content following schemas",
-      "output_location": "/nextjs-deepv-content/staging/guides/",
+      "output_location": "{CONTENT_REPO_PATH}/staging/guides/",
       "filename_pattern": "{slug}-{8-char-hex-id}.mdx",
-      "validation": "All content MUST pass validation against schemas"
+      "validation": "All content MUST pass validation against schemas",
+      "note": "CONTENT_REPO_PATH must be defined by upstream (e.g., /path/to/nextjs-deepv-content)"
     },
     "step_5": {
       "action": "Generate complete article index",
-      "output_location": "/nextjs-deepv-content/staging/config/article-index-update.json",
+      "output_location": "{CONTENT_REPO_PATH}/staging/config/article-index-update.json",
       "requirement": "Include ALL articles (existing + new)",
-      "format": "Follow article-index-schema.json exactly"
+      "format": "Follow article-index-schema.json exactly",
+      "note": "CONTENT_REPO_PATH must be defined by upstream"
     }
   },
   "validation_tools": {
@@ -153,6 +155,27 @@
       "Logical content structure with clear headings",
       "Proper conclusion and next steps"
     ]
+  },
+  "path_configuration": {
+    "content_repository": {
+      "name": "nextjs-deepv-content",
+      "url": "git@github.com:thaddeus-git/nextjs-deepv-content.git",
+      "description": "External content repository separate from main application"
+    },
+    "required_paths": {
+      "staging_articles": "{CONTENT_REPO_PATH}/staging/guides/",
+      "staging_index": "{CONTENT_REPO_PATH}/staging/config/article-index-update.json",
+      "production_articles": "{CONTENT_REPO_PATH}/guides/",
+      "production_index": "{CONTENT_REPO_PATH}/config/article-index.json"
+    },
+    "upstream_must_define": {
+      "CONTENT_REPO_PATH": "Absolute path to cloned nextjs-deepv-content repository",
+      "example": "/path/to/nextjs-deepv-content",
+      "note": "Upstream must set this variable based on their environment"
+    },
+    "directory_structure": {
+      "example": "/path/to/nextjs-deepv-content/\n├── staging/\n│   ├── guides/\n│   └── config/\n│       └── article-index-update.json\n├── guides/\n│   └── {article-files}.mdx\n└── config/\n    ├── article-index.json\n    └── categories.json"
+    }
   },
   "deployment_architecture": {
     "platform": "Vercel with ISR (Incremental Static Regeneration)",
