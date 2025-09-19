@@ -15,17 +15,7 @@
     "content": {
       "url": "git@github.com:thaddeus-git/nextjs-deepv-content.git", 
       "purpose": "MDX articles and configuration",
-      "scalability": "100,000+ articles",
-      "required_structure": {
-        "staging": {
-          "guides": "Staging area for new articles",
-          "config": "Staging area for index updates"
-        },
-        "production": {
-          "guides": "Published articles directory",
-          "config": "Live configuration files"
-        }
-      }
+      "scalability": "100,000+ articles"
     }
   },
   "architecture": {
