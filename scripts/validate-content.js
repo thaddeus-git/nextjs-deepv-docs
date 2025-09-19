@@ -149,6 +149,34 @@ class ContentValidator {
       warnings.push(`Found ${potentialMermaidBlocks.length} potential Mermaid diagram(s) without 'mermaid' language tag - use \`\`\`mermaid`);
     }
 
+    // Check for common language specification mistakes
+    const commonMistakes = [
+      { pattern: /```js\n/g, correct: 'javascript', wrong: 'js' },
+      { pattern: /```py\n/g, correct: 'python', wrong: 'py' },
+      { pattern: /```shell\n/g, correct: 'bash', wrong: 'shell' },
+      { pattern: /```yml\n/g, correct: 'yaml', wrong: 'yml' },
+      { pattern: /```md\n/g, correct: 'markdown', wrong: 'md' },
+      { pattern: /```node\n/g, correct: 'javascript', wrong: 'node' }
+    ];
+
+    commonMistakes.forEach(mistake => {
+      const matches = content.match(mistake.pattern);
+      if (matches && matches.length > 0) {
+        warnings.push(`Found ${matches.length} code block(s) using '${mistake.wrong}' - use '${mistake.correct}' instead for better syntax highlighting`);
+      }
+    });
+
+    // Check for good practices
+    const allCodeBlocks = content.match(/```(\w+)/g);
+    if (allCodeBlocks && allCodeBlocks.length > 0) {
+      const langCount = allCodeBlocks.length;
+      const uniqueLangs = [...new Set(allCodeBlocks.map(block => block.replace('```', '')))];
+      // This is actually good - just for info
+      if (langCount >= 3) {
+        warnings.push(`✅ Good: Found ${langCount} properly tagged code blocks with ${uniqueLangs.length} different languages`);
+      }
+    }
+
     return warnings;
   }
 
