@@ -1,0 +1,93 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "description": "Complete upstream integration guide for DeepV Code content generation",
+    "lastUpdated": "2025-09-18",
+    "purpose": "One-stop reference for all schemas and APIs needed by upstream generators"
+  },
+  "required_schemas": {
+    "content_schema": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
+      "version": "2.2.0",
+      "purpose": "Article structure, frontmatter requirements, code block specifications",
+      "critical_for": "MDX file generation, language specifications, Mermaid diagrams",
+      "update_frequency": "When content requirements change"
+    },
+    "categories_schema": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
+      "purpose": "Valid category/subcategory combinations with colors and titles",
+      "critical_for": "Category validation, navigation structure, article classification",
+      "update_frequency": "When new categories added"
+    },
+    "article_index_schema": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/article-index-schema.json",
+      "version": "1.0.0",
+      "purpose": "Article index structure, URL patterns, consistency requirements",
+      "critical_for": "Index generation, URL structure, metadata validation",
+      "update_frequency": "When index format changes"
+    },
+    "tech_stack": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/tech-stack.json",
+      "purpose": "Technical environment specifications, dependencies",
+      "critical_for": "Understanding platform constraints, feature compatibility",
+      "update_frequency": "When dependencies change"
+    },
+    "project_config": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/project.json",
+      "purpose": "Project metadata, repository URLs, environment variables",
+      "critical_for": "Understanding deployment target, architecture",
+      "update_frequency": "When project configuration changes"
+    }
+  },
+  "validation_tools": {
+    "content_validator": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-content.js",
+      "purpose": "Validate generated MDX files against content schema",
+      "usage": "node validate-content.js staging/guides content-schema.json",
+      "catches": ["Missing languages in code blocks", "Invalid frontmatter", "Mermaid diagram issues"]
+    },
+    "index_validator": {
+      "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/scripts/validate-article-index.js", 
+      "purpose": "Validate article index consistency",
+      "usage": "node validate-article-index.js staging/config/article-index-update.json",
+      "catches": ["Index inconsistencies", "Missing articles", "Invalid categories"]
+    }
+  },
+  "workflow_integration": {
+    "step_1_fetch_schemas": {
+      "description": "Download all required schemas before generation",
+      "commands": [
+        "curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json > content-schema.json",
+        "curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json > categories.json",
+        "curl -s https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/article-index-schema.json > article-index-schema.json"
+      ]
+    },
+    "step_2_validate_requirements": {
+      "description": "Ensure all schema requirements are understood",
+      "critical_checks": [
+        "Code blocks MUST have language specifications",
+        "Mermaid diagrams use 'mermaid' language tag",
+        "Categories exist in categories.json",
+        "Article IDs are 8-character hex",
+        "URLs follow /guides/{slug}-{id} pattern"
+      ]
+    },
+    "step_3_generate_content": {
+      "description": "Generate MDX files following content-schema.json",
+      "output_location": "/nextjs-deepv-content/staging/guides/",
+      "filename_pattern": "{slug}-{8-char-hex-id}.mdx"
+    },
+    "step_4_generate_index": {
+      "description": "Generate complete article index following article-index-schema.json",
+      "output_location": "/nextjs-deepv-content/staging/config/article-index-update.json",
+      "includes": "ALL articles (existing + new)"
+    },
+    "step_5_validate": {
+      "description": "Optional validation before production",
+      "commands": [
+        "node validate-content.js staging/guides content-schema.json",
+        "node validate-article-index.js staging/config/article-index-update.json"
+      ]
+    }
+  }
+}

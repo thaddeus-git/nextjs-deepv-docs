@@ -1,0 +1,199 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "description": "SEO and metadata requirements for optimal search engine performance",
+    "purpose": "Ensure all generated content follows SEO best practices",
+    "lastUpdated": "2025-09-18"
+  },
+  "title_optimization": {
+    "requirements": {
+      "min_length": 5,
+      "max_length": 70,
+      "optimal_length": "50-60 characters",
+      "reason": "Google displays ~50-60 characters in search results"
+    },
+    "best_practices": [
+      "Include primary keyword near the beginning",
+      "Use action words (How to, Guide, Tutorial, Complete)",
+      "Be specific and descriptive",
+      "Avoid clickbait or misleading titles"
+    ],
+    "title_patterns": {
+      "tutorial": "How to {action} in {technology}: {outcome}",
+      "guide": "{Technology} {Topic}: Complete Guide for {audience}",
+      "comparison": "{Technology A} vs {Technology B}: {aspect} Comparison",
+      "troubleshooting": "Fix {Error/Issue} in {Technology}: {solutions} Solutions",
+      "reference": "{Technology} {Feature} Reference: {comprehensive_description}"
+    },
+    "examples": {
+      "good": [
+        "JavaScript Array Methods: Complete Guide for Beginners",
+        "How to Connect MySQL Database in Python: 5 Easy Steps",
+        "Docker vs Kubernetes: Container Orchestration Comparison"
+      ],
+      "bad": [
+        "Everything You Need to Know About JavaScript Arrays and How to Use Them Effectively",
+        "Database",
+        "Programming Tutorial"
+      ]
+    }
+  },
+  "description_optimization": {
+    "requirements": {
+      "min_length": 20,
+      "max_length": 200,
+      "optimal_length": "150-160 characters",
+      "reason": "Google displays ~150-160 characters in search snippets"
+    },
+    "structure": {
+      "format": "{what_readers_learn} + {key_benefit} + {target_audience}",
+      "elements": [
+        "What the article teaches",
+        "Key benefit or outcome", 
+        "Target audience level",
+        "Main technologies covered"
+      ]
+    },
+    "keywords": {
+      "primary_keyword": "Include the main keyword naturally",
+      "secondary_keywords": "Include 1-2 related terms",
+      "avoid": "Keyword stuffing, repetition, unnatural phrasing"
+    },
+    "examples": {
+      "good": [
+        "Learn JavaScript array methods like map, filter, and reduce with practical examples. Perfect for beginners wanting to master data manipulation in modern web development.",
+        "Step-by-step guide to connecting MySQL databases in Python using PyMySQL and SQLAlchemy. Includes connection pooling, error handling, and best practices.",
+        "Compare Docker and Kubernetes for container orchestration. Learn when to use each tool, key differences, and migration strategies for development teams."
+      ],
+      "bad": [
+        "This article explains arrays.",
+        "JavaScript JavaScript JavaScript learn JavaScript arrays and methods for JavaScript development with JavaScript examples",
+        "Read this comprehensive detailed extensive complete guide about JavaScript arrays and all the methods you can use"
+      ]
+    }
+  },
+  "tags_optimization": {
+    "requirements": {
+      "min_tags": 3,
+      "max_tags": 8,
+      "optimal_count": "4-6 tags"
+    },
+    "tag_types": {
+      "primary_technology": "Main technology (javascript, python, sql)",
+      "secondary_technology": "Related technologies (react, nodejs, mysql)",
+      "content_type": "Type of content (tutorial, guide, reference, example)",
+      "skill_level": "Target audience (beginner, intermediate, advanced)",
+      "topic_category": "Broad category (web-development, data-science, devops)"
+    },
+    "tag_best_practices": [
+      "Use lowercase with hyphens for multi-word tags",
+      "Include the main technology/language",
+      "Add content type (tutorial, guide, etc.)",
+      "Include difficulty level",
+      "Add relevant frameworks or tools",
+      "Use popular, searchable terms"
+    ],
+    "examples": {
+      "javascript_tutorial": ["javascript", "tutorial", "beginner", "web-development", "frontend"],
+      "python_database": ["python", "mysql", "database", "tutorial", "backend", "sqlalchemy"],
+      "docker_guide": ["docker", "containerization", "devops", "guide", "intermediate"],
+      "react_component": ["react", "javascript", "component", "frontend", "tutorial", "jsx"]
+    }
+  },
+  "content_structure_seo": {
+    "heading_hierarchy": {
+      "h1": "One per article, matches title, includes primary keyword",
+      "h2": "Main sections, include secondary keywords naturally",
+      "h3": "Subsections, support the main topic flow",
+      "best_practices": [
+        "Use descriptive, keyword-rich headings",
+        "Maintain logical hierarchy (H1 → H2 → H3)",
+        "Include keywords naturally, not forced",
+        "Make headings scannable for readers"
+      ]
+    },
+    "content_length": {
+      "minimum": "300 words for basic articles",
+      "optimal": "800-2000 words for comprehensive guides",
+      "factors": [
+        "Topic complexity",
+        "User intent (quick reference vs deep learning)",
+        "Competition analysis",
+        "Code examples and explanations needed"
+      ]
+    },
+    "internal_linking": {
+      "requirements": "Link to 2-4 related articles when relevant",
+      "anchor_text": "Use descriptive, keyword-rich anchor text",
+      "placement": "Natural within content flow, not forced",
+      "examples": [
+        "Learn more about [React state management](link)",
+        "For database optimization, see our [SQL performance guide](link)",
+        "Complete [JavaScript fundamentals tutorial](link)"
+      ]
+    }
+  },
+  "technical_seo": {
+    "url_structure": {
+      "pattern": "/guides/{slug}-{id}",
+      "slug_requirements": [
+        "Use kebab-case (lowercase with hyphens)",
+        "Include primary keyword",
+        "Keep under 50 characters",
+        "Avoid stop words when possible"
+      ],
+      "examples": {
+        "good": [
+          "/guides/javascript-array-methods-tutorial-abc12345",
+          "/guides/python-mysql-connection-guide-def67890",
+          "/guides/docker-vs-kubernetes-comparison-ghi01234"
+        ],
+        "bad": [
+          "/guides/article-1-abc12345",
+          "/guides/the-complete-guide-to-javascript-arrays-and-all-methods-xyz98765",
+          "/guides/js_tutorial-abc12345"
+        ]
+      }
+    },
+    "schema_markup": {
+      "article_type": "TechnicalArticle",
+      "required_fields": [
+        "headline (title)",
+        "description",
+        "author (DeepV Code)",
+        "datePublished",
+        "dateModified (lastUpdated)",
+        "keywords (tags)"
+      ],
+      "automatically_generated": "Next.js metadata API handles schema markup"
+    },
+    "performance_seo": {
+      "code_blocks": "Proper language specification improves rendering",
+      "images": "Use descriptive alt text when images added",
+      "loading_speed": "ISR ensures fast page loads",
+      "mobile_friendly": "Responsive design built-in"
+    }
+  },
+  "content_quality_signals": {
+    "expertise_indicators": [
+      "Detailed, accurate technical information",
+      "Practical code examples that work",
+      "Step-by-step instructions",
+      "Error handling and troubleshooting",
+      "Best practices and common pitfalls"
+    ],
+    "user_experience_factors": [
+      "Clear, scannable structure",
+      "Logical flow from simple to complex",
+      "Visual elements (diagrams, code blocks)",
+      "Actionable conclusions",
+      "Related content suggestions"
+    ],
+    "freshness_signals": [
+      "Recent lastUpdated timestamps",
+      "Current version references",
+      "Modern best practices",
+      "Updated dependencies and tools"
+    ]
+  }
+}
