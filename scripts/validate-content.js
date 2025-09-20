@@ -145,7 +145,7 @@ class ContentValidator {
     // Check for code blocks without language specification
     const codeBlocksWithoutLang = content.match(/```\s*\n/g);
     if (codeBlocksWithoutLang && codeBlocksWithoutLang.length > 0) {
-      warnings.push(`Found ${codeBlocksWithoutLang.length} code block(s) without language specification - use \`\`\`javascript, \`\`\`sql, \`\`\`mermaid etc.`);
+      warnings.push(`Found ${codeBlocksWithoutLang.length} code block(s) without language specification - use \`\`\`javascript, \`\`\`sql, \`\`\`mermaid, or \`\`\`text for generic content`);
     }
 
     // Check for Mermaid diagrams that might be missing proper language tag

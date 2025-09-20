@@ -10,9 +10,9 @@
     "content_requirements": {
       "name": "Content Schema",
       "file": "content-schema.json",
-      "version": "3.3.0",
+      "version": "3.4.0",
       "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
-      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, image support, accurate SEO guidelines",
+      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, image support, text/config blocks, accurate SEO guidelines",
       "critical_for": [
         "MDX article structure",
         "Code block language specifications", 
@@ -26,7 +26,7 @@
     "content_templates": {
       "name": "Content Templates",
       "file": "content-templates.json", 
-      "version": "1.2.0",
+      "version": "1.3.0",
       "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-templates.json",
       "purpose": "Ready-to-use templates and examples for consistent content generation",
       "critical_for": [
@@ -96,6 +96,7 @@
       "action": "Understand requirements", 
       "focus": [
         "Code blocks MUST have language specified (content-schema.json)",
+        "Use 'text' for configuration snippets, output, or generic content",
         "Mermaid diagrams use 'mermaid' language tag", 
         "Images use PLACEHOLDER format: ![Title](PLACEHOLDER: description)",
         "Image files follow naming: {8-char-id}-{kebab-case-title}.png",
