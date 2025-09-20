@@ -37,8 +37,10 @@ function main() {
 
   const contentRepoPath = args[0];
   const stagingGuides = path.join(contentRepoPath, 'staging', 'guides');
+  const stagingImages = path.join(contentRepoPath, 'staging', 'images');
   const stagingConfig = path.join(contentRepoPath, 'staging', 'config', 'article-index-update.json');
   const productionGuides = path.join(contentRepoPath, 'guides');
+  const productionImages = path.join(contentRepoPath, 'images');
   const productionConfig = path.join(contentRepoPath, 'config', 'article-index.json');
   const schemaFile = path.join(contentRepoPath, 'content-schema.json');
 
@@ -64,14 +66,18 @@ function main() {
     ? fs.readdirSync(stagingGuides).filter(f => f.endsWith('.mdx'))
     : [];
   
+  const imageFiles = fs.existsSync(stagingImages)
+    ? fs.readdirSync(stagingImages).filter(f => f.endsWith('.png') || f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.webp'))
+    : [];
+  
   const hasIndexUpdate = fs.existsSync(stagingConfig);
 
-  if (mdxFiles.length === 0 && !hasIndexUpdate) {
+  if (mdxFiles.length === 0 && imageFiles.length === 0 && !hasIndexUpdate) {
     log('yellow', '⚠️  No content found in staging. Nothing to promote.');
     process.exit(0);
   }
 
-  log('green', `📄 Found ${mdxFiles.length} articles and ${hasIndexUpdate ? '1' : '0'} index update`);
+  log('green', `📄 Found ${mdxFiles.length} articles, ${imageFiles.length} images, and ${hasIndexUpdate ? '1' : '0'} index update`);
 
   // Step 3: Promote content
   log('blue', '\n🔄 Step 3: Promoting content to production...');
@@ -81,6 +87,9 @@ function main() {
     if (!fs.existsSync(productionGuides)) {
       fs.mkdirSync(productionGuides, { recursive: true });
     }
+    if (!fs.existsSync(productionImages)) {
+      fs.mkdirSync(productionImages, { recursive: true });
+    }
 
     // Move articles
     if (mdxFiles.length > 0) {
@@ -88,12 +97,27 @@ function main() {
         const source = path.join(stagingGuides, file);
         const dest = path.join(productionGuides, file);
         fs.copyFileSync(source, dest);
-        log('green', `  ✅ Promoted: ${file}`);
+        log('green', `  ✅ Promoted article: ${file}`);
       });
 
       // Clean staging articles
       mdxFiles.forEach(file => {
         fs.unlinkSync(path.join(stagingGuides, file));
+      });
+    }
+
+    // Move images
+    if (imageFiles.length > 0) {
+      imageFiles.forEach(file => {
+        const source = path.join(stagingImages, file);
+        const dest = path.join(productionImages, file);
+        fs.copyFileSync(source, dest);
+        log('green', `  ✅ Promoted image: ${file}`);
+      });
+
+      // Clean staging images
+      imageFiles.forEach(file => {
+        fs.unlinkSync(path.join(stagingImages, file));
       });
     }
 
@@ -117,7 +141,7 @@ function main() {
     
     execSync('git add .', { stdio: 'inherit' });
     
-    const commitMessage = `Add ${mdxFiles.length} new articles - ${new Date().toISOString().split('T')[0]}`;
+    const commitMessage = `Add ${mdxFiles.length} articles and ${imageFiles.length} images - ${new Date().toISOString().split('T')[0]}`;
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     
     execSync('git push', { stdio: 'inherit' });

@@ -177,6 +177,36 @@ class ContentValidator {
       }
     }
 
+    // Check for image placeholders and validate format
+    const imagePlaceholders = content.match(/!\[([^\]]+)\]\(PLACEHOLDER:\s*([^)]+)\)/g);
+    if (imagePlaceholders && imagePlaceholders.length > 0) {
+      imagePlaceholders.forEach(placeholder => {
+        const match = placeholder.match(/!\[([^\]]+)\]\(PLACEHOLDER:\s*([^)]+)\)/);
+        if (match) {
+          const title = match[1];
+          const description = match[2];
+          
+          // Check if title is descriptive enough
+          if (title.length < 5) {
+            warnings.push(`Image placeholder title too short: "${title}" - should be more descriptive`);
+          }
+          
+          // Check if description is detailed enough
+          if (description.length < 20) {
+            warnings.push(`Image placeholder description too short: "${description}" - should explain what the image shows`);
+          }
+        }
+      });
+      
+      warnings.push(`✅ Found ${imagePlaceholders.length} properly formatted image placeholder(s)`);
+    }
+
+    // Check for standard markdown images (should use placeholders instead)
+    const standardImages = content.match(/!\[([^\]]*)\]\((?!PLACEHOLDER:)([^)]+)\)/g);
+    if (standardImages && standardImages.length > 0) {
+      warnings.push(`Found ${standardImages.length} standard markdown image(s) - consider using PLACEHOLDER format for upstream generation`);
+    }
+
     return warnings;
   }
 

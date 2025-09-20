@@ -17,6 +17,7 @@
         "MDX article structure",
         "Code block language specifications", 
         "Mermaid diagram support",
+        "Image placeholder format and conversion",
         "SEO title/description requirements",
         "Content validation rules"
       ],
@@ -94,7 +95,9 @@
       "action": "Understand requirements", 
       "focus": [
         "Code blocks MUST have language specified (content-schema.json)",
-        "Mermaid diagrams use 'mermaid' language tag",
+        "Mermaid diagrams use 'mermaid' language tag", 
+        "Images use PLACEHOLDER format: ![Title](PLACEHOLDER: description)",
+        "Image files follow naming: {8-char-id}-{kebab-case-title}.png",
         "SEO requirements for titles (5-70 chars) and descriptions (20-200 chars)",
         "Categories must exist in categories.json",
         "Article URLs follow /guides/{slug}-{id} pattern"
@@ -158,10 +161,12 @@
     "name": "nextjs-deepv-content",
     "staging": {
       "articles": "staging/guides/",
+      "images": "staging/images/",
       "index": "staging/config/article-index-update.json"
     },
     "production": {
       "articles": "guides/",
+      "images": "images/",
       "index": "config/article-index.json",
       "categories": "config/categories.json"
     }

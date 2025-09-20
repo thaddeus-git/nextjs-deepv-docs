@@ -100,6 +100,56 @@
     "content": {
       "min_length": 100,
       "required_heading": "# Main Title",
+      "images": {
+        "placeholder_format": {
+          "syntax": "![Image Title](PLACEHOLDER: Detailed description)",
+          "examples": [
+            "![Dependency Resolution Process](PLACEHOLDER: A technical diagram illustrating the RPM dependency resolution process)",
+            "![Command Line Workflow](PLACEHOLDER: Three terminal windows showing step-by-step commands)"
+          ],
+          "requirements": [
+            "Image Title must be descriptive (used for filename generation)",
+            "PLACEHOLDER: prefix is mandatory for automated conversion",
+            "Detailed description explains what image should show"
+          ]
+        },
+        "file_naming": {
+          "pattern": "{8-char-hex-id}-{kebab-case-title}.png",
+          "conversion_rule": "Image Title → kebab-case (lowercase, hyphens, no special chars)",
+          "examples": [
+            "Dependency Resolution Process → abc12345-dependency-resolution-process.png",
+            "Command Line Workflow → abc12345-command-line-workflow.png",
+            "Database Schema Diagram → def67890-database-schema-diagram.png"
+          ]
+        },
+        "storage_structure": {
+          "staging": "staging/images/",
+          "production": "images/",
+          "url_pattern": "/images/{filename}",
+          "next_js_optimization": "Automatic WebP conversion and responsive sizing"
+        },
+        "technical_requirements": {
+          "format": "PNG (preferred for technical diagrams)",
+          "width": "800px (standard for articles)",
+          "aspect_ratio": "16:9 for diagrams, variable for screenshots",
+          "file_size": "< 500KB per image for optimal loading",
+          "accessibility": "Alt text required for screen readers"
+        },
+        "conversion_process": {
+          "step_1": "Upstream generates placeholder: ![Title](PLACEHOLDER: description)",
+          "step_2": "Upstream generates image file: {id}-{title}.png in staging/images/",
+          "step_3": "Script converts placeholder → <Image src=\"/images/{filename}\" alt=\"Title\" />",
+          "step_4": "Promotion script moves images: staging/images/ → images/"
+        },
+        "next_js_image_component": {
+          "width": 800,
+          "height": 450,
+          "sizes": "(max-width: 768px) 100vw, 800px",
+          "priority": "true for first image in article",
+          "className": "rounded-lg shadow-lg",
+          "style": "width: 100%, height: auto, maxWidth: 800px"
+        }
+      },
       "code_blocks": {
         "requirement": "MUST specify language for ALL code blocks - no exceptions",
         "format": "```{language}",

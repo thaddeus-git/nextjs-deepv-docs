@@ -1,4 +1,5 @@
 import MermaidDiagram from './MermaidDiagram'
+import Image from 'next/image'
 import { ReactNode } from 'react'
 
 interface CodeProps {
@@ -100,4 +101,35 @@ export const mdxComponents = {
       {children}
     </td>
   ),
+  img: (props: any) => {
+    // Extract the alt text and src
+    const { src, alt, ...rest } = props;
+    
+    // Default dimensions for technical diagrams
+    const width = 800;
+    const height = 450; // 16:9 aspect ratio for diagrams
+    
+    // Determine if this is the first image (for priority loading)
+    const isPriority = false; // Can be enhanced with context if needed
+    
+    return (
+      <div className="my-6 flex justify-center">
+        <Image
+          src={src}
+          alt={alt || 'Technical diagram'}
+          width={width}
+          height={height}
+          sizes="(max-width: 768px) 100vw, 800px"
+          priority={isPriority}
+          className="rounded-lg shadow-lg"
+          style={{
+            width: '100%',
+            height: 'auto',
+            maxWidth: '800px'
+          }}
+          {...rest}
+        />
+      </div>
+    );
+  },
 }

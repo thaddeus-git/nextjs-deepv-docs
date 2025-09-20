@@ -18,8 +18,26 @@
       "lastUpdated": "2025-09-18T12:00:00.000Z",
       "featured": false
     },
-    "content_structure_template": "---\n{frontmatter}\n---\n\n# {title}\n\n## Overview\n\nBrief introduction explaining what this article covers and why it's important.\n\n## Prerequisites\n\n- Basic knowledge requirement 1\n- Basic knowledge requirement 2\n\n## Main Content Section\n\n### Subsection with Code Example\n\nExplanation of the concept.\n\n```javascript\n// Always specify language for code blocks\nconst example = 'This shows proper syntax highlighting';\nconsole.log(example);\n```\n\n### Subsection with Diagram\n\nFor process flows, use Mermaid diagrams:\n\n```mermaid\nflowchart TD\n    A[Start] --> B[Process]\n    B --> C[Decision]\n    C -->|Yes| D[Success]\n    C -->|No| E[Error]\n```\n\n## Conclusion\n\nSummarize what was covered and next steps.\n\n## Related Articles\n\n- [Related Article 1](/guides/related-article-1)\n- [Related Article 2](/guides/related-article-2)",
+    "content_structure_template": "---\n{frontmatter}\n---\n\n# {title}\n\n## Overview\n\nBrief introduction explaining what this article covers and why it's important.\n\n![Technical Overview Diagram](PLACEHOLDER: A diagram showing the main components and their relationships)\n\n## Prerequisites\n\n- Basic knowledge requirement 1\n- Basic knowledge requirement 2\n\n## Main Content Section\n\n### Subsection with Code Example\n\nExplanation of the concept.\n\n```javascript\n// Always specify language for code blocks\nconst example = 'This shows proper syntax highlighting';\nconsole.log(example);\n```\n\n### Subsection with Diagram\n\nFor process flows, use Mermaid diagrams:\n\n```mermaid\nflowchart TD\n    A[Start] --> B[Process]\n    B --> C[Decision]\n    C -->|Yes| D[Success]\n    C -->|No| E[Error]\n```\n\nFor complex workflows, use images:\n\n![Step-by-Step Process](PLACEHOLDER: A detailed workflow diagram showing the complete process from start to finish)\n\n## Conclusion\n\nSummarize what was covered and next steps.\n\n## Related Articles\n\n- [Related Article 1](/guides/related-article-1)\n- [Related Article 2](/guides/related-article-2)",
     "filename_template": "{slug}-{8-char-hex-id}.mdx"
+  },
+  "image_examples": {
+    "placeholder_format": [
+      "![Dependency Resolution Process](PLACEHOLDER: A technical diagram illustrating how RPM packages resolve dependencies, showing package manager checking library versions)",
+      "![Command Line Workflow](PLACEHOLDER: Three terminal windows displaying step-by-step commands: initial error, package update, successful installation)",
+      "![Database Schema](PLACEHOLDER: Entity relationship diagram showing user, order, and product tables with foreign key relationships)",
+      "![API Flow Diagram](PLACEHOLDER: Sequence diagram showing client request, authentication, processing, and response steps)"
+    ],
+    "generated_filenames": [
+      "abc12345-dependency-resolution-process.png",
+      "abc12345-command-line-workflow.png", 
+      "def67890-database-schema.png",
+      "def67890-api-flow-diagram.png"
+    ],
+    "final_mdx_format": [
+      "<Image src=\"/images/abc12345-dependency-resolution-process.png\" alt=\"Dependency Resolution Process\" width={800} height={450} sizes=\"(max-width: 768px) 100vw, 800px\" className=\"rounded-lg shadow-lg\" />",
+      "<Image src=\"/images/abc12345-command-line-workflow.png\" alt=\"Command Line Workflow\" width={800} height={450} sizes=\"(max-width: 768px) 100vw, 800px\" className=\"rounded-lg shadow-lg\" />"
+    ]
   },
   "common_code_examples": {
     "javascript_function": "```javascript\nfunction calculateSum(a, b) {\n    return a + b;\n}\n\nconst result = calculateSum(5, 3);\nconsole.log(result); // Output: 8\n```",
