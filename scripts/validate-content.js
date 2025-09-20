@@ -70,8 +70,13 @@ class ContentValidator {
     if (frontmatter.title && typeof frontmatter.title !== 'string') {
       errors.push('title must be a string');
     }
-    if (frontmatter.title && (frontmatter.title.length < 5 || frontmatter.title.length > 70)) {
-      errors.push('title must be 5-70 characters (SEO optimized)');
+    if (frontmatter.title && frontmatter.title.length < 5) {
+      errors.push('title must be at least 5 characters (too short for SEO)');
+    }
+
+    // Informational note for display optimization (not an error)
+    if (frontmatter.title && frontmatter.title.length > 60) {
+      warnings.push(`Title is ${frontmatter.title.length} characters - may be truncated in SERP display (~60 char limit), but full title still provides SEO value`);
     }
 
     if (frontmatter.slug && !/^[a-z0-9-]+$/.test(frontmatter.slug)) {

@@ -138,8 +138,8 @@ class ArticleIndexValidator {
       errors.push(`Article ${article.id}: ID must be 8-character hex string`);
     }
 
-    if (article.title && (article.title.length < 5 || article.title.length > 70)) {
-      errors.push(`Article ${article.id}: Title must be 5-70 characters (current: ${article.title.length})`);
+    if (article.title && article.title.length < 5) {
+      errors.push(`Article ${article.id}: Title must be at least 5 characters (current: ${article.title.length})`);
     }
 
     if (article.slug && !/^[a-z0-9-]+$/.test(article.slug)) {

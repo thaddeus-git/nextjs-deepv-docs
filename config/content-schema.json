@@ -1,8 +1,8 @@
 {
   "_metadata": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "lastUpdated": "2025-09-18",
-    "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid, code language, image support, and SEO optimization",
+    "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid, code language, image support, and accurate SEO guidelines",
     "api_urls": {
       "schema": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
       "categories": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/content/config/categories.json",
@@ -40,8 +40,8 @@
         "title": {
           "type": "string",
           "min_length": 5,
-          "max_length": 70,
-          "description": "SEO optimized length"
+          "max_length": null,
+          "description": "No character limit - Google indexes entire title. For optimal display in SERPs, consider ~50-60 characters, but longer titles still provide SEO value."
         },
         "slug": {
           "type": "string", 
@@ -340,14 +340,20 @@
   },
   "seo_optimization_requirements": {
     "title_seo": {
-      "min_length": 5,
-      "max_length": 70,
-      "optimal_length": "50-60 characters",
+      "character_limit": "No limit - Google indexes entire title for SEO",
+      "display_optimization": "~50-60 characters for full SERP visibility",
+      "seo_truth": [
+        "Google has NO character limit for indexing titles",
+        "Longer titles still provide SEO value beyond display",
+        "Truncation in SERPs ≠ reduced SEO effectiveness", 
+        "Focus on clarity and keyword relevance over length"
+      ],
       "requirements": [
         "Include primary keyword near beginning",
         "Use action words (How to, Guide, Tutorial)",
-        "Be specific and descriptive",
-        "Avoid clickbait or misleading titles"
+        "Be specific and descriptive", 
+        "Avoid clickbait or misleading titles",
+        "Write for users first, length second"
       ],
       "patterns": {
         "tutorial": "How to {action} in {technology}: {outcome}",
@@ -394,10 +400,11 @@
       "solution": "Use JavaScript: new Date().toISOString()",
       "correct_format": "2024-09-18T12:30:00.000Z (3-digit milliseconds)"
     },
-    "title_length": {
-      "problem": "Titles exceed 70 characters",
-      "solution": "Truncate or rephrase to ≤70 characters",
-      "reason": "SEO optimization for search results"
+    "title_display_optimization": {
+      "note": "Google has NO character limit for title indexing",
+      "display_consideration": "~50-60 characters for full SERP visibility",
+      "seo_reality": "Longer titles still provide SEO value beyond display truncation",
+      "recommendation": "Prioritize clarity and keyword relevance over arbitrary length limits"
     },
     "code_block_languages": {
       "problem": "Code blocks without language specification",

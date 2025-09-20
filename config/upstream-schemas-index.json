@@ -10,9 +10,9 @@
     "content_requirements": {
       "name": "Content Schema",
       "file": "content-schema.json",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
-      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, image support, SEO optimization",
+      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, image support, accurate SEO guidelines",
       "critical_for": [
         "MDX article structure",
         "Code block language specifications", 
@@ -99,7 +99,7 @@
         "Mermaid diagrams use 'mermaid' language tag", 
         "Images use PLACEHOLDER format: ![Title](PLACEHOLDER: description)",
         "Image files follow naming: {8-char-id}-{kebab-case-title}.png",
-        "SEO requirements for titles (5-70 chars) and descriptions (20-200 chars)",
+        "SEO requirements for titles (no limit) and descriptions (20-200 chars)",
         "Categories must exist in categories.json",
         "Article URLs follow /guides/{slug}-{id} pattern"
       ]
@@ -146,7 +146,8 @@
       "Missing or invalid frontmatter fields"
     ],
     "seo_optimization": [
-      "Titles 50-60 characters with keywords",
+      "Titles optimized for keywords and clarity (no character limit)",
+      "Consider ~50-60 characters for SERP display, but longer titles still provide SEO value",
       "Descriptions 150-160 characters with value proposition",
       "4-6 relevant tags including technology and difficulty",
       "SEO-friendly URL slugs"
