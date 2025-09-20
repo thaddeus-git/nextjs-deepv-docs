@@ -10,9 +10,9 @@
     "content_requirements": {
       "name": "Content Schema",
       "file": "content-schema.json",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-schema.json",
-      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, SEO optimization",
+      "purpose": "Complete content requirements: frontmatter, code languages, Mermaid, image support, SEO optimization",
       "critical_for": [
         "MDX article structure",
         "Code block language specifications", 
@@ -26,12 +26,13 @@
     "content_templates": {
       "name": "Content Templates",
       "file": "content-templates.json", 
-      "version": "1.0.0",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/thaddeus-git/nextjs-deepv-docs/main/config/content-templates.json",
       "purpose": "Ready-to-use templates and examples for consistent content generation",
       "critical_for": [
         "Complete MDX article templates",
-        "Code examples for major languages",
+        "Code examples for major languages", 
+        "Image placeholder examples and naming conventions",
         "Frontmatter examples by category",
         "Quality standards and best practices"
       ],
