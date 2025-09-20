@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Ready-to-use templates for content generation",
     "purpose": "Standardized templates to ensure consistency across all generated articles",
     "lastUpdated": "2025-09-18"
@@ -81,7 +81,7 @@
   },
   "article_quality_checklist": {
     "required_elements": [
-      "Clear title (5-70 characters)",
+      "Clear title (minimum 5 characters, no upper limit)",
       "SEO description (20-200 characters)",
       "Main heading (# Title)",
       "At least 2-3 subheadings (## Section)",
@@ -99,7 +99,7 @@
     ],
     "common_mistakes_to_avoid": [
       "Code blocks without language (``` instead of ```javascript)",
-      "Titles too long (>70 characters)",
+      "Titles too short (<5 characters)",
       "Descriptions too short (<20 characters)",
       "Missing main heading",
       "No practical examples"

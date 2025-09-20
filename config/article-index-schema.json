@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Article index schema for DeepV Code content management",
     "lastUpdated": "2025-09-18"
   },
@@ -46,8 +46,8 @@
             "title": {
               "type": "string",
               "min_length": 5,
-              "max_length": 70,
-              "description": "Must match frontmatter title"
+              "max_length": null,
+              "description": "Must match frontmatter title - no character limit per Google SEO guidelines"
             },
             "slug": {
               "type": "string",

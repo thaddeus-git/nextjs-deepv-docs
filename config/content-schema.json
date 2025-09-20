@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "version": "3.2.0",
+    "version": "3.3.0",
     "lastUpdated": "2025-09-18",
     "description": "DeepV Code Content Schema - Complete upstream integration API with Mermaid, code language, image support, and accurate SEO guidelines",
     "api_urls": {
@@ -17,7 +17,7 @@
       "description", "tags", "difficulty", "readTime", "lastUpdated"
     ],
     "frontmatter_types": {
-      "title": "string (5-70 characters)",
+      "title": "string (minimum 5 characters, no upper limit)",
       "slug": "string (kebab-case)",
       "category": "enum",
       "subcategory": "string",
@@ -389,7 +389,7 @@
       "slug_requirements": [
         "Use kebab-case (lowercase with hyphens)",
         "Include primary keyword",
-        "Keep under 50 characters",
+        "Keep concise and descriptive (~50-60 characters optimal, but no hard limit)",
         "Avoid stop words when possible"
       ]
     }
